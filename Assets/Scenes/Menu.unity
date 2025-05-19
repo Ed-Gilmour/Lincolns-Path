@@ -512,7 +512,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 445, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &587327799
 MonoBehaviour:
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightSound:
     clip: {fileID: 8300000, guid: 8fa3f93c0092d4f44ad6f803a058c677, type: 3}
-    volume: 0.3
+    volume: 0.5
 --- !u!114 &587327802
 MonoBehaviour:
   m_ObjectHideFlags: 0
