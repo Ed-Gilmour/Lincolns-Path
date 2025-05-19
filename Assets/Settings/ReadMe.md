@@ -1,5 +1,7 @@
-TRY 2 OTHER WEBGL TEMPLATES
-For builds paste this before the closing header in index.html
+TRY THIRD WEB TEMPLATE
+For builds
+- Put the page background in TemplateData
+- Paste this before the closing header in index.html
 <style>
     body {
     margin: 0;
@@ -8,4 +10,3 @@ For builds paste this before the closing header in index.html
     background-size: cover;
     }
 </style>
-And also put the page background in the template data
