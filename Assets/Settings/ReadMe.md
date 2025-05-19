@@ -1,4 +1,3 @@
-TRY THIRD WEB TEMPLATE
 For builds
 - Put the page background in TemplateData
 - Paste this before the closing header in index.html
