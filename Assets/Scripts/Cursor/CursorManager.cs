@@ -9,7 +9,7 @@ public class CursorManager : MonoBehaviour
     static CursorManager _cursorManager;
     public static CursorManager Instance { get { return _cursorManager; } }
 
-    [HideInInspector] public readonly Vector2 cursorHotspot = new(0.3f, 1f);
+    [HideInInspector] public readonly Vector2 cursorHotspot = new(18, 4);
 
     void Awake()
     {
