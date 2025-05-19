@@ -290,6 +290,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444389753}
   m_CullTransparentMesh: 1
+--- !u!1 &463118602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463118604}
+  - component: {fileID: 463118603}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &463118603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463118602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c01830bdcfa4e3419e0f550bf8ef86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 6cbe2b829a2dfc84d8b080b488ad3722, type: 3}
+  selectableCursor: {fileID: 2800000, guid: 7a64d6610f507b74d8e3833f947bd426, type: 3}
+--- !u!4 &463118604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463118602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +485,7 @@ GameObject:
   - component: {fileID: 587327799}
   - component: {fileID: 587327800}
   - component: {fileID: 587327801}
+  - component: {fileID: 587327802}
   m_Layer: 5
   m_Name: StartGameButton
   m_TagString: Untagged
@@ -547,7 +594,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightSound:
     clip: {fileID: 8300000, guid: 8fa3f93c0092d4f44ad6f803a058c677, type: 3}
-    volume: 0.5
+    volume: 0.3
+--- !u!114 &587327802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587327797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bac77627e69a64992ed2be1fe5dbc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &589056748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,3 +1367,4 @@ SceneRoots:
   - {fileID: 944516790}
   - {fileID: 1887419337}
   - {fileID: 19123004}
+  - {fileID: 463118604}
