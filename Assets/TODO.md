@@ -1,0 +1,1 @@
+Make start game button bigger by isolating button size from line effect.
