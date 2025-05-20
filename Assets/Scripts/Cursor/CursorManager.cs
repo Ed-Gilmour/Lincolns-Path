@@ -9,11 +9,12 @@ public class CursorManager : MonoBehaviour
     static CursorManager _cursorManager;
     public static CursorManager Instance { get { return _cursorManager; } }
 
-    [HideInInspector] public readonly Vector2 cursorHotspot = new(9, 2);
+    [HideInInspector] public readonly Vector2 cursorHotspot = new(11, 0);
 
     void Awake()
     {
         Singleton();
+        Cursor.SetCursor(defaultCursor, cursorHotspot, CursorMode.Auto);
         SceneManager.activeSceneChanged += OnSceneChange;
     }
 
