@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 
 public class ButtonCursorSelectable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    CursorManager cursorManager;
+    private CursorManager cursorManager;
 
-    void Start()
+    private void Start()
     {
         cursorManager = CursorManager.Instance;
     }

@@ -11,19 +11,19 @@ public class CursorManager : MonoBehaviour
 
     [HideInInspector] public readonly Vector2 cursorHotspot = new(11, 0);
 
-    void Awake()
+    private void Awake()
     {
         Singleton();
         Cursor.SetCursor(defaultCursor, cursorHotspot, CursorMode.Auto);
         SceneManager.activeSceneChanged += OnSceneChange;
     }
 
-    void OnSceneChange(Scene current, Scene next)
+    private void OnSceneChange(Scene current, Scene next)
     {
         Cursor.SetCursor(defaultCursor, cursorHotspot, CursorMode.Auto);
     }
 
-    void Singleton()
+    private void Singleton()
     {
         if (_cursorManager != null && _cursorManager != this)
         {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5b45161ee19bdc3438622ba15ed69883
+guid: e63107649ee0f3c4187aaea99b499f6c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Almonte
+  - Crimson Pro
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
