@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class IntroManager : MonoBehaviour
 {
-    public TextMeshProUGUI introText;
-    public string[] introTexts;
+    [SerializeField] private MaskSwipeEffect maskSwipeEffect;
+    [SerializeField] private TextMeshProUGUI introText;
+    [SerializeField] private string[] introTexts;
     private int currentIntroIndex;
     private bool canSkip;
-    private float waitTime = 1f;
 
     private void Start()
     {
@@ -29,16 +29,26 @@ public class IntroManager : MonoBehaviour
         }
     }
 
-    IEnumerator IntroTextRoutine()
+    private IEnumerator IntroTextRoutine()
     {
         introText.text = introTexts[currentIntroIndex];
         currentIntroIndex++;
-        yield return new WaitForSeconds(waitTime);
+
+        maskSwipeEffect.SwipeEffectIn();
+
+        yield return new WaitUntil(() => !maskSwipeEffect.swipingIn);
+
         canSkip = true;
 
-        if (currentIntroIndex >= introTexts.Length) yield break;
-
         yield return new WaitUntil(() => !canSkip);
-        StartCoroutine(IntroTextRoutine());
+
+        maskSwipeEffect.SwipeEffectOut();
+
+        yield return new WaitUntil(() => !maskSwipeEffect.swipingOut);
+
+        if (currentIntroIndex < introTexts.Length)
+        {
+            StartCoroutine(IntroTextRoutine());
+        }
     }
 }

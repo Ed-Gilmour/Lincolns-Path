@@ -4,8 +4,8 @@ using TMPro;
 
 public class TypewriterEffect : MonoBehaviour
 {
-    public TextMeshProUGUI effectText;
-    public float characterDelay;
+    [SerializeField] private TextMeshProUGUI effectText;
+    [SerializeField] private float characterDelay;
     private string targetString;
 
     public float PlayTypewriterEffect(string newText)
