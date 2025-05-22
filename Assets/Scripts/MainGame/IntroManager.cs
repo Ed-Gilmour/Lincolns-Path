@@ -9,7 +9,6 @@ public class IntroManager : MonoBehaviour
     [SerializeField] private MaskSwipeEffect maskSwipeEffect;
     [SerializeField] private TextFadeEffect continueTextFade;
     [SerializeField] private TextMeshProUGUI introText;
-    [SerializeField] private float continueTextTime;
     [SerializeField] private AudioManager.AudioClipData swipeOutSound;
     [SerializeField] private IntroTextData[] introData;
     private int currentIntroIndex;
@@ -21,6 +20,7 @@ public class IntroManager : MonoBehaviour
     {
         public AudioManager.AudioClipData textSound;
         public string introText;
+        public float continueTextTime;
     }
 
     private void Start()
@@ -58,7 +58,7 @@ public class IntroManager : MonoBehaviour
         yield return new WaitUntil(() => !maskSwipeEffect.swipingIn);
 
         canSkip = true;
-        StartCoroutine(ContinueTextRoutine(currentIntroIndex));
+        StartCoroutine(ContinueTextRoutine(currentIntroIndex, textData.continueTextTime));
 
         yield return new WaitUntil(() => !canSkip);
 
@@ -73,9 +73,9 @@ public class IntroManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ContinueTextRoutine(int tempIndex)
+    private IEnumerator ContinueTextRoutine(int tempIndex, float textTime)
     {
-        yield return new WaitForSeconds(continueTextTime);
+        yield return new WaitForSeconds(textTime);
         if (canSkip && tempIndex == currentIntroIndex)
         {
             continueTextActive = true;

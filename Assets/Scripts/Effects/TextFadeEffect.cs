@@ -27,7 +27,7 @@ public class TextFadeEffect : MonoBehaviour
         }
         else if (isPulsing)
         {
-            UpdateTextAlpha(pulseTime / pulseDepth);
+            UpdateTextAlpha(pulseTime / pulseDepth, pulseDepth);
             if (effectText.alpha >= 1f || effectText.alpha <= pulseDepth)
             {
                 pulseTime = -pulseTime;
@@ -39,9 +39,9 @@ public class TextFadeEffect : MonoBehaviour
         }
     }
 
-    private void UpdateTextAlpha(float time)
+    private void UpdateTextAlpha(float time, float clampMin = 0f)
     {
-        effectText.alpha = Mathf.Clamp01(effectText.alpha + (Time.deltaTime / time));
+        effectText.alpha = Mathf.Clamp(effectText.alpha + (Time.deltaTime / time), clampMin, 1f);
     }
 
     public void FadeIn()

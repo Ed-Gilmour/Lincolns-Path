@@ -719,7 +719,7 @@ MonoBehaviour:
     volume: 0.5
   clickSound:
     clip: {fileID: 8300000, guid: c5f9b3ba09cea5c4480f0e02f3563b3d, type: 3}
-    volume: 1
+    volume: 0.8
 --- !u!114 &587327802
 MonoBehaviour:
   m_ObjectHideFlags: 0

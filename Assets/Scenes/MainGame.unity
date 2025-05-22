@@ -166,25 +166,27 @@ MonoBehaviour:
   maskSwipeEffect: {fileID: 182323244}
   continueTextFade: {fileID: 1154185640}
   introText: {fileID: 245363363}
-  continueTextTime: 5
   swipeOutSound:
     clip: {fileID: 8300000, guid: c5f9b3ba09cea5c4480f0e02f3563b3d, type: 3}
-    volume: 0.5
+    volume: 0.8
   introData:
   - textSound:
       clip: {fileID: 8300000, guid: 15bce47ae5a4d994a8db5b55c58d3e09, type: 3}
-      volume: 1
+      volume: 0.7
     introText: The date is March 4, 1861.
+    continueTextTime: 2
   - textSound:
       clip: {fileID: 8300000, guid: 125111a4aa1e821428dce7352e49b59a, type: 3}
-      volume: 1
+      volume: 0.8
     introText: Tensions in the Union are high as seven states in the South have seceded,
       the Confederacy is formed, and a Civil War seems near.
+    continueTextTime: 4
   - textSound:
       clip: {fileID: 8300000, guid: 8fe8683f320bcae42b2aa4768ab873ea, type: 3}
       volume: 1
     introText: You have been inaugurated into office as the first republican president,
       president Lincoln.
+    continueTextTime: 3
   - textSound:
       clip: {fileID: 8300000, guid: 81277d4a27d367947820e1345d69027a, type: 3}
       volume: 1
@@ -194,6 +196,7 @@ MonoBehaviour:
       and patriot grave, to every living heart and hearth-stone, all over this broad
       land, will yet swell the chorus of the Union, when again touched, as surely
       they will be, by the better angels of our nature.
+    continueTextTime: 10
 --- !u!1 &182323241
 GameObject:
   m_ObjectHideFlags: 0
