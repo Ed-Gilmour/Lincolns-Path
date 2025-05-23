@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class IntroManager : MonoBehaviour
 {
-    [SerializeField] private EventManager eventManager;
     [SerializeField] private MaskSwipeEffect maskSwipeEffect;
     [SerializeField] private TextFadeEffect continueTextFade;
     [SerializeField] private TextMeshProUGUI introText;
@@ -74,7 +73,7 @@ public class IntroManager : MonoBehaviour
         }
         else
         {
-            eventManager.StartGame();
+            EventManager.Instance.StartGame();
         }
     }
 

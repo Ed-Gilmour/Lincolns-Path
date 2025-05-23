@@ -1,11 +1,24 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] private GameObject mainGameBackground;
-    [SerializeField] private GameObject tempEvent;
+    public static EventManager Instance { get; private set; }
+
+    [SerializeField] private GameObject personObject;
+    [SerializeField] private TextMeshProUGUI personText;
+    [SerializeField] private GameObject letterObject;
+    [SerializeField] private TextMeshProUGUI letterText;
     [SerializeField] private float startGameDelay;
+    [SerializeField] private GameObject[] objectsToActivateOnStart;
+    [SerializeField] private EventDataScriptableObject[] events;
+    private int currentEventIndex;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void StartGame()
     {
@@ -14,8 +27,31 @@ public class EventManager : MonoBehaviour
 
     private IEnumerator StartGameRoutine()
     {
-        mainGameBackground.SetActive(true);
+        foreach (GameObject obj in objectsToActivateOnStart)
+        {
+            obj.SetActive(true);
+        }
         yield return new WaitForSeconds(startGameDelay);
-        tempEvent.SetActive(true);
+        PlayEvent();
+    }
+
+    private void PlayEvent()
+    {
+        EventDataScriptableObject eventData = events[currentEventIndex];
+        if (eventData.eventType == GameEventType.Letter)
+        {
+            SetUpEvent(letterObject, letterText, eventData.eventDescription);
+        }
+        else
+        {
+            SetUpEvent(personObject, personText, eventData.eventDescription);
+        }
+        currentEventIndex++;
+    }
+
+    private void SetUpEvent(GameObject eventObj, TextMeshProUGUI eventText, string eventDescription)
+    {
+        eventObj.SetActive(true);
+        eventText.text = eventDescription;
     }
 }
