@@ -12,7 +12,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI letterText;
     [SerializeField] private float startGameDelay;
     [SerializeField] private GameObject[] objectsToActivateOnStart;
-    [SerializeField] private EventDataScriptableObject[] events;
+    [SerializeField] private EventData[] events;
     private int currentEventIndex;
 
     void Awake()
@@ -37,7 +37,7 @@ public class EventManager : MonoBehaviour
 
     private void PlayEvent()
     {
-        EventDataScriptableObject eventData = events[currentEventIndex];
+        EventData eventData = events[currentEventIndex];
         if (eventData.eventType == GameEventType.Letter)
         {
             SetUpEvent(letterObject, letterText, eventData.eventDescription);

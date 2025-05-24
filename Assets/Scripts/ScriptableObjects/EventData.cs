@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewEventData", menuName = "Scriptable Objects/EventData")]
-public class EventDataScriptableObject : ScriptableObject
+public class EventData : ScriptableObject
 {
     public GameEventType eventType;
     [TextArea] public string eventDescription;
