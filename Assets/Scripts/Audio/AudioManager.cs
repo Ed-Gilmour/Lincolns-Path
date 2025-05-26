@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public static class AudioManager
 {
     [Serializable]
     public class AudioClipData
@@ -21,6 +21,6 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = clipData.volume;
         audioSource.clip = clipData.clip;
         audioSource.Play();
-        Destroy(audioSource.gameObject, clipData.clip.length);
+        UnityEngine.Object.Destroy(audioSource.gameObject, clipData.clip.length);
     }
 }

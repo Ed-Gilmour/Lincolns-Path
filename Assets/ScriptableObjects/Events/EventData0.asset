@@ -22,5 +22,15 @@ MonoBehaviour:
 
 
     From Major Robert Anderson.'
-  decision1Description: 
-  decision2Description: 
+  decision1Description: Resupply the Fort.
+  decision1StatsChange:
+    military: 10
+    money: -10
+    north: 10
+    south: 15
+  decision2Description: Surrender the Fort to the Confederates.
+  decision2StatsChange:
+    military: -15
+    money: -10
+    north: 15
+    south: 0
