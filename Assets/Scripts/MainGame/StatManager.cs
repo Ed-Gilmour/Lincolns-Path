@@ -11,6 +11,10 @@ public class StatManager : MonoBehaviour
     [SerializeField] private RectTransform moneySignalRectTransform;
     [SerializeField] private RectTransform northSignalRectTransform;
     [SerializeField] private RectTransform southSignalRectTransform;
+    [SerializeField] private GraphicFadeEffect militarySignalFadeEffect;
+    [SerializeField] private GraphicFadeEffect moneySignalFadeEffect;
+    [SerializeField] private GraphicFadeEffect northSignalFadeEffect;
+    [SerializeField] private GraphicFadeEffect southSignalFadeEffect;
     private StatSet stats = new();
     private EventData currentEventData;
     private readonly Vector2 signalSmallSize = new(8f, 8f);
@@ -63,23 +67,23 @@ public class StatManager : MonoBehaviour
     public void SetStatSignals(bool isDecision1)
     {
         StatSet statChange = isDecision1 ? currentEventData.decision1StatsChange : currentEventData.decision2StatsChange;
-        SetSingleStatSignal(militarySignalRectTransform, statChange.military);
-        SetSingleStatSignal(moneySignalRectTransform, statChange.money);
-        SetSingleStatSignal(northSignalRectTransform, statChange.north);
-        SetSingleStatSignal(southSignalRectTransform, statChange.south);
+        SetSingleStatSignal(militarySignalRectTransform, militarySignalFadeEffect, statChange.military);
+        SetSingleStatSignal(moneySignalRectTransform, moneySignalFadeEffect, statChange.money);
+        SetSingleStatSignal(northSignalRectTransform, northSignalFadeEffect, statChange.north);
+        SetSingleStatSignal(southSignalRectTransform, southSignalFadeEffect, statChange.south);
     }
 
     public void ClearStatSignals()
     {
-        militarySignalRectTransform.gameObject.SetActive(false);
-        moneySignalRectTransform.gameObject.SetActive(false);
-        northSignalRectTransform.gameObject.SetActive(false);
-        southSignalRectTransform.gameObject.SetActive(false);
+        militarySignalFadeEffect.SetFade(false);
+        moneySignalFadeEffect.SetFade(false);
+        northSignalFadeEffect.SetFade(false);
+        southSignalFadeEffect.SetFade(false);
     }
 
-    private void SetSingleStatSignal(RectTransform rectTransform, int stat)
+    private void SetSingleStatSignal(RectTransform rectTransform, GraphicFadeEffect fadeEffect, int change)
     {
-        rectTransform.sizeDelta = Mathf.Abs(stat) >= minChangeForLarge ? signalLargeSize : signalSmallSize;
-        rectTransform.gameObject.SetActive(Mathf.Abs(stat) > 0);
+        rectTransform.sizeDelta = Mathf.Abs(change) >= minChangeForLarge ? signalLargeSize : signalSmallSize;
+        fadeEffect.SetFade(Mathf.Abs(change) > 0);
     }
 }

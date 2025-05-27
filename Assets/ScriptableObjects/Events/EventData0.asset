@@ -27,10 +27,10 @@ MonoBehaviour:
     military: 10
     money: -10
     north: 10
-    south: 15
+    south: -15
   decision2Description: Surrender the Fort to the Confederates.
   decision2StatsChange:
     military: -15
-    money: -10
-    north: 15
-    south: 0
+    money: 0
+    north: -10
+    south: 15
