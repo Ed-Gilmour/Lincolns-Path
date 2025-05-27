@@ -1,1 +1,0 @@
-When click a decision fade and move everything out
