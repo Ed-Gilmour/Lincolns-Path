@@ -160,7 +160,7 @@ AudioSource:
   m_GameObject: {fileID: 3056400}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
   m_audioClip: {fileID: 8300000, guid: 072fcf8ce400ab843b7d44d40b0caf0c, type: 3}
   m_Resource: {fileID: 8300000, guid: 072fcf8ce400ab843b7d44d40b0caf0c, type: 3}
   m_PlayOnAwake: 1
@@ -543,27 +543,32 @@ MonoBehaviour:
   introText: {fileID: 245363363}
   swipeOutSound:
     clip: {fileID: 8300000, guid: c5f9b3ba09cea5c4480f0e02f3563b3d, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 0.8
   introData:
   - textSound:
       clip: {fileID: 8300000, guid: 15bce47ae5a4d994a8db5b55c58d3e09, type: 3}
+      mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 0.7
     introText: The date is March 4, 1861.
     continueTextTime: 2
   - textSound:
       clip: {fileID: 8300000, guid: 125111a4aa1e821428dce7352e49b59a, type: 3}
+      mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 0.8
     introText: Tensions in the Union are high as seven states in the South have seceded,
       the Confederacy is formed, and a Civil War seems near.
     continueTextTime: 4
   - textSound:
       clip: {fileID: 8300000, guid: 8fe8683f320bcae42b2aa4768ab873ea, type: 3}
+      mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 1
     introText: You have been inaugurated into office as the first republican president,
       president Lincoln.
     continueTextTime: 3
   - textSound:
       clip: {fileID: 8300000, guid: 81277d4a27d367947820e1345d69027a, type: 3}
+      mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 1
     introText: I am loath to close. We are not enemies, but friends. We must not
       be enemies. Though passion may have strained, it must not break our bonds of
@@ -1718,9 +1723,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightSound:
     clip: {fileID: 8300000, guid: 2398b2f4dbb47e34990dba6f5a1315a8, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
   clickSound:
     clip: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
 --- !u!1 &619394800
 GameObject:
@@ -1937,7 +1944,7 @@ AudioSource:
   m_GameObject: {fileID: 708499819}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8556bb368d4d44c4a8337ce6d919fa62, type: 3}
   m_Resource: {fileID: 8300000, guid: 8556bb368d4d44c4a8337ce6d919fa62, type: 3}
   m_PlayOnAwake: 1
@@ -2905,7 +2912,7 @@ AudioSource:
   m_GameObject: {fileID: 1250072473}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
   m_audioClip: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
   m_Resource: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
   m_PlayOnAwake: 1
@@ -8450,9 +8457,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightSound:
     clip: {fileID: 8300000, guid: 2398b2f4dbb47e34990dba6f5a1315a8, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
   clickSound:
     clip: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
 --- !u!1 &1409093442
 GameObject:

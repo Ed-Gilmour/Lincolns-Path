@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public static class AudioManager
 {
@@ -7,17 +8,22 @@ public static class AudioManager
     public class AudioClipData
     {
         public AudioClip clip;
+        public AudioMixerGroup mixerGroup;
         public float volume;
 
         public void Play()
         {
-            PlayAudioClip(this);
+            if (clip != null)
+            {
+                PlayAudioClip(this);
+            }
         }
     }
 
     public static void PlayAudioClip(AudioClipData clipData)
     {
         AudioSource audioSource = new GameObject(clipData.clip.name).AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = clipData.mixerGroup;
         audioSource.volume = clipData.volume;
         audioSource.clip = clipData.clip;
         audioSource.Play();
