@@ -2290,6 +2290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46025d79c4e764148beed90c973cf00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  writtenFont: {fileID: 11400000, guid: ddd1a7bac379b004295db03b16a8c303, type: 2}
+  typedFont: {fileID: 11400000, guid: b5ab176196363534b9c79560e6326442, type: 2}
   decisionsAnimator: {fileID: 247559549}
   decision2Text: {fileID: 1409093444}
   decision1Text: {fileID: 1244123749}

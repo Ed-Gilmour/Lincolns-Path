@@ -5,6 +5,8 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
+    [SerializeField] private TMP_FontAsset writtenFont;
+    [SerializeField] private TMP_FontAsset typedFont;
     [SerializeField] private Animator decisionsAnimator;
     [SerializeField] private TextMeshProUGUI decision2Text;
     [SerializeField] private TextMeshProUGUI decision1Text;
@@ -16,10 +18,31 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameObject[] objectsToActivateOnStart;
     [SerializeField] private EventData[] events;
     private int currentEventIndex;
+    private const float writtenLineSpacing = -30f;
+    private const float typedLineSpacing = -5f;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        UpdateAccessibilityFont();
+    }
+
+    private void UpdateAccessibilityFont()
+    {
+        if (PauseMenu.Instance.GetIsAccessibilityFont())
+        {
+            letterText.font = typedFont;
+            letterText.lineSpacing = typedLineSpacing;
+        }
+        else
+        {
+            letterText.font = writtenFont;
+            letterText.lineSpacing = writtenLineSpacing;
+        }
     }
 
     public void StartGame()

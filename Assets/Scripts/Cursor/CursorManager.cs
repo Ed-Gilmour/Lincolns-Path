@@ -6,6 +6,7 @@ public class CursorManager : MonoBehaviour
     public static CursorManager Instance { get; private set; }
     public Texture2D defaultCursor;
     public Texture2D selectableCursor;
+    [HideInInspector] public bool isOverSelectable;
     [HideInInspector] public readonly Vector2 cursorHotspot = new(11, 0);
 
     private void Awake()

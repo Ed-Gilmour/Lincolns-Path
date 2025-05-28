@@ -29,4 +29,9 @@ public static class AudioManager
         audioSource.Play();
         UnityEngine.Object.Destroy(audioSource.gameObject, clipData.clip.length);
     }
+
+    public static void SetVolume(AudioMixer mixer, float value)
+    {
+        mixer.SetFloat("MasterVolume", Mathf.Approximately(value, 0f) ? -80f : Mathf.Log10(value) * 20f);
+    }
 }

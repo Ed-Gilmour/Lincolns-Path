@@ -35,7 +35,7 @@ public class IntroManager : MonoBehaviour
 
     private void CheckForSkip()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (!CursorManager.Instance.isOverSelectable && !PauseMenu.Instance.GetIsPauseMenuOpen() && Mouse.current.leftButton.wasPressedThisFrame)
         {
             canSkip = false;
             if (continueTextActive)
