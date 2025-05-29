@@ -563,7 +563,7 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 8fe8683f320bcae42b2aa4768ab873ea, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 1
-    introText: You have been inaugurated into office as the first republican president,
+    introText: You have been inaugurated into office as the first Republican president,
       president Lincoln.
     continueTextTime: 3
   - textSound:

@@ -19,9 +19,8 @@ public class PauseMenu : MonoBehaviour
 
     private void InitializeUI()
     {
-        GameData gameData = SaveSystem.LoadData<GameData>(SaveSystem.DataFilePath(SaveSystem.GameDataFileName));
-        volumeSlider.value = gameData.volume;
-        accessibilityToggle.isOn = gameData.isAccessibilityFont;
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
+        accessibilityToggle.isOn = PlayerPrefs.GetString("AccessibilityFont", false.ToString()) == true.ToString();
 
         volumeSlider.onValueChanged.AddListener(SetVolume);
         accessibilityToggle.onValueChanged.AddListener(SetAccessibilityFont);
@@ -43,17 +42,15 @@ public class PauseMenu : MonoBehaviour
     public void SetVolume(float value)
     {
         AudioManager.SetVolume(mainMixer, value);
-        GameData gameData = SaveSystem.LoadData<GameData>(SaveSystem.DataFilePath(SaveSystem.GameDataFileName));
-        gameData.volume = value;
-        SaveSystem.SaveData(gameData, SaveSystem.DataFilePath(SaveSystem.GameDataFileName));
+        PlayerPrefs.SetFloat("Volume", value);
+        PlayerPrefs.Save();
     }
 
     public void SetAccessibilityFont(bool isOn)
     {
         isAccessibilityFont = isOn;
-        GameData gameData = SaveSystem.LoadData<GameData>(SaveSystem.DataFilePath(SaveSystem.GameDataFileName));
-        gameData.isAccessibilityFont = isOn;
-        SaveSystem.SaveData(gameData, SaveSystem.DataFilePath(SaveSystem.GameDataFileName));
+        PlayerPrefs.SetString("AccessibilityFont", isAccessibilityFont.ToString());
+        PlayerPrefs.Save();
     }
 
     public bool GetIsAccessibilityFont()
