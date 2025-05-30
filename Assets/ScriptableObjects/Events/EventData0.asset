@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: EventData0
   m_EditorClassIdentifier: 
   eventType: 1
+  personTitle: 
+  personSprite: {fileID: 0}
+  date: March 4, 1861
   eventDescription: 'Mr. President,
 
 
@@ -28,9 +31,11 @@ MonoBehaviour:
     money: -10
     north: 10
     south: -15
+  decision1FollowingEvent: {fileID: 11400000, guid: 074586a6235e5ef4683ecacdf01690a5, type: 2}
   decision2Description: Surrender the Fort to the Confederates.
   decision2StatsChange:
     military: -15
     money: 0
     north: -10
     south: 15
+  decision2FollowingEvent: {fileID: 0}

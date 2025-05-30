@@ -7,13 +7,17 @@ public class EventManager : MonoBehaviour
     public static EventManager Instance { get; private set; }
     [SerializeField] private TMP_FontAsset writtenFont;
     [SerializeField] private TMP_FontAsset typedFont;
+    [SerializeField] private Animator dateAnimator;
+    [SerializeField] private TypewriterEffect dateTypewriterEffect;
     [SerializeField] private Animator decisionsAnimator;
     [SerializeField] private TextMeshProUGUI decision2Text;
     [SerializeField] private TextMeshProUGUI decision1Text;
     [SerializeField] private AudioManager.AudioClipData personClickSound;
     [SerializeField] private AudioManager.AudioClipData personTalkSound;
+    [SerializeField] private SpriteRenderer personSpriteRenderer;
     [SerializeField] private Animator personAnimator;
     [SerializeField] private Animator personMoveAnimator;
+    [SerializeField] private Animator personCanvasAnimator;
     [SerializeField] private TextMeshProUGUI personTitleText;
     [SerializeField] private TextMeshProUGUI personText;
     [SerializeField] private AudioManager.AudioClipData letterClickSound;
@@ -26,6 +30,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private SelectableAnimator[] decisionAnimators;
     [SerializeField] private GameObject[] objectsToActivateOnStart;
     [SerializeField] private EventData[] events;
+    private EventData currentEvent;
     private int currentEventIndex;
     private const float writtenLineSpacing = -30f;
     private const float typedLineSpacing = -5f;
@@ -60,6 +65,7 @@ public class EventManager : MonoBehaviour
         {
             obj.SetActive(true);
         }
+        currentEvent = events[currentEventIndex];
         StartCoroutine(PlayEventRoutine(gameStartDelay));
     }
 
@@ -67,9 +73,8 @@ public class EventManager : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelay);
 
-        EventData eventData = events[currentEventIndex];
-        StatManager.Instance.SetCurrentEvent(eventData);
-        bool isLetter = eventData.eventType == GameEventType.Letter;
+        StatManager.Instance.SetCurrentEvent(currentEvent);
+        bool isLetter = currentEvent.eventType == GameEventType.Letter;
         Animator eventAnimator = isLetter ? letterAnimator : personAnimator;
 
         foreach (SelectableAnimator selectableAnimator in decisionAnimators)
@@ -82,13 +87,14 @@ public class EventManager : MonoBehaviour
         }
 
         eventAnimator.gameObject.SetActive(true);
-        (isLetter ? letterText : personText).text = eventData.eventDescription;
-        decision1Text.text = eventData.decision1Description;
-        decision2Text.text = eventData.decision2Description;
+        (isLetter ? letterText : personText).text = currentEvent.eventDescription;
+        decision1Text.text = currentEvent.decision1Description;
+        decision2Text.text = currentEvent.decision2Description;
 
         if (!isLetter)
         {
-            personTitleText.text = eventData.personTitle;
+            personSpriteRenderer.sprite = currentEvent.personSprite;
+            personTitleText.text = currentEvent.personTitle;
         }
 
         eventAnimator.SetTrigger("Open");
@@ -101,9 +107,13 @@ public class EventManager : MonoBehaviour
         if (!isLetter)
         {
             personTalkSound.Play();
+            personCanvasAnimator.SetTrigger("Show");
         }
 
+        dateTypewriterEffect.PlayTypewriterEffect(currentEvent.date);
+
         decisionsAnimator.SetTrigger("Show");
+        dateAnimator.SetTrigger("Show");
     }
 
     public void CloseEvent(bool isDecision1)
@@ -111,16 +121,37 @@ public class EventManager : MonoBehaviour
         StartCoroutine(CloseEventRoutine(isDecision1));
         if (currentEventIndex < events.Length - 1)
         {
-            currentEventIndex++;
+            if (isDecision1 && currentEvent.decision1FollowingEvent != null)
+            {
+                currentEvent = currentEvent.decision1FollowingEvent;
+            }
+            else if (!isDecision1 && currentEvent.decision2FollowingEvent != null)
+            {
+                currentEvent = currentEvent.decision2FollowingEvent;
+            }
+            else
+            {
+                currentEventIndex++;
+                currentEvent = events[currentEventIndex];
+            }
+
             StartCoroutine(PlayEventRoutine(eventDelay));
         }
     }
 
     private IEnumerator CloseEventRoutine(bool isDecision1)
     {
-        EventData eventData = events[currentEventIndex];
+        bool isLetter = currentEvent.eventType == GameEventType.Letter;
+
+        if (!isLetter)
+        {
+            personCanvasAnimator.SetTrigger("Hide");
+        }
+
         decisionsAnimator.SetTrigger("Hide");
-        Animator eventAnimator = eventData.eventType == GameEventType.Letter ? letterAnimator : personAnimator;
+        dateAnimator.SetTrigger("Hide");
+
+        Animator eventAnimator = isLetter ? letterAnimator : personAnimator;
 
         eventAnimator.SetTrigger(isDecision1 ? "Left" : "Right");
         AnimatorStateInfo stateInfo = eventAnimator.GetCurrentAnimatorStateInfo(0);

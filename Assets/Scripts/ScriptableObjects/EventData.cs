@@ -5,11 +5,15 @@ public class EventData : ScriptableObject
 {
     public GameEventType eventType;
     public string personTitle;
+    public Sprite personSprite;
+    public string date;
     [TextArea] public string eventDescription;
     [TextArea] public string decision1Description;
     public StatManager.StatSet decision1StatsChange;
+    public EventData decision1FollowingEvent;
     [TextArea] public string decision2Description;
     public StatManager.StatSet decision2StatsChange;
+    public EventData decision2FollowingEvent;
 }
 
 public enum GameEventType { Person, Letter }
