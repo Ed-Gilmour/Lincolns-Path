@@ -15,4 +15,9 @@ public class SelectableAnimator : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         targetAnimator.SetBool(enterName, false);
     }
+
+    public void SetTargetAnimator(Animator newAnimator)
+    {
+        targetAnimator = newAnimator;
+    }
 }

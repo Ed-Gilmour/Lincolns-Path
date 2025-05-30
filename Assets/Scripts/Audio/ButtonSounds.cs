@@ -15,4 +15,9 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler
     {
         clickSound.Play();
     }
+
+    public void SetClickSound(AudioManager.AudioClipData newSound)
+    {
+        clickSound = newSound;
+    }
 }

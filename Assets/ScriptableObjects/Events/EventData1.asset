@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
+  m_Name: EventData1
+  m_EditorClassIdentifier: 
+  eventType: 0
+  personTitle: Secretary of War Simon Cameron
+  eventDescription: Mr. President, the Confederates have taken over Fort Sumter after
+    our recent resupply attempt.
+  decision1Description: Call for 75,000 state militia to serve in volunteer regiments.
+  decision1StatsChange:
+    military: 15
+    money: 0
+    north: 10
+    south: -10
+  decision2Description: Appeal directly to the southern people.
+  decision2StatsChange:
+    military: -10
+    money: 0
+    north: -15
+    south: 10

@@ -4,6 +4,7 @@ using UnityEngine;
 public class EventData : ScriptableObject
 {
     public GameEventType eventType;
+    public string personTitle;
     [TextArea] public string eventDescription;
     [TextArea] public string decision1Description;
     public StatManager.StatSet decision1StatsChange;
