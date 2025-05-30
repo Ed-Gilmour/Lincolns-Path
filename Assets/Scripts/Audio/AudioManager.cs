@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
+using Random = UnityEngine.Random;
+
 public static class AudioManager
 {
     [Serializable]
@@ -10,6 +12,7 @@ public static class AudioManager
         public AudioClip clip;
         public AudioMixerGroup mixerGroup;
         public float volume;
+        public float pitchVariation;
 
         public void Play()
         {
@@ -25,6 +28,7 @@ public static class AudioManager
         AudioSource audioSource = new GameObject(clipData.clip.name).AddComponent<AudioSource>();
         audioSource.outputAudioMixerGroup = clipData.mixerGroup;
         audioSource.volume = clipData.volume;
+        audioSource.pitch = Random.Range(1f - clipData.pitchVariation, 1f + clipData.pitchVariation);
         audioSource.clip = clipData.clip;
         audioSource.Play();
         UnityEngine.Object.Destroy(audioSource.gameObject, clipData.clip.length);

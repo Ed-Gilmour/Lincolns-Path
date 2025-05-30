@@ -13,7 +13,6 @@ public class EventManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI decision2Text;
     [SerializeField] private TextMeshProUGUI decision1Text;
     [SerializeField] private AudioManager.AudioClipData personClickSound;
-    [SerializeField] private AudioManager.AudioClipData personTalkSound;
     [SerializeField] private SpriteRenderer personSpriteRenderer;
     [SerializeField] private Animator personAnimator;
     [SerializeField] private Animator personMoveAnimator;
@@ -106,7 +105,7 @@ public class EventManager : MonoBehaviour
 
         if (!isLetter)
         {
-            personTalkSound.Play();
+            currentEvent.personSound.Play();
             personCanvasAnimator.SetTrigger("Show");
         }
 
