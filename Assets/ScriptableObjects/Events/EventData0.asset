@@ -15,6 +15,11 @@ MonoBehaviour:
   eventType: 1
   personTitle: 
   personSprite: {fileID: 0}
+  personSound:
+    clip: {fileID: 0}
+    mixerGroup: {fileID: 0}
+    volume: 0
+    pitchVariation: 0
   date: March 4, 1861
   eventDescription: 'Mr. President,
 
@@ -39,3 +44,4 @@ MonoBehaviour:
     north: -10
     south: 15
   decision2FollowingEvent: {fileID: 0}
+  isDecision1Lincoln: 1

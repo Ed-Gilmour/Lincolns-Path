@@ -545,17 +545,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c5f9b3ba09cea5c4480f0e02f3563b3d, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 0.8
+    pitchVariation: 0
   introData:
   - textSound:
       clip: {fileID: 8300000, guid: 15bce47ae5a4d994a8db5b55c58d3e09, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 0.7
+      pitchVariation: 0
     introText: The date is March 4, 1861.
     continueTextTime: 2
   - textSound:
       clip: {fileID: 8300000, guid: 125111a4aa1e821428dce7352e49b59a, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 0.8
+      pitchVariation: 0
     introText: Tensions in the Union are high as seven states in the South have seceded,
       the Confederacy is formed, and a Civil War seems near.
     continueTextTime: 4
@@ -563,6 +566,7 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 8fe8683f320bcae42b2aa4768ab873ea, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 1
+      pitchVariation: 0
     introText: You have been inaugurated into office as the first Republican president,
       president Lincoln.
     continueTextTime: 3
@@ -570,6 +574,7 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 81277d4a27d367947820e1345d69027a, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
       volume: 1
+      pitchVariation: 0
     introText: I am loath to close. We are not enemies, but friends. We must not
       be enemies. Though passion may have strained, it must not break our bonds of
       affection. The mystic chords of memory, stretching from every battle-field,
@@ -1660,7 +1665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &562275238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1854,10 +1859,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2398b2f4dbb47e34990dba6f5a1315a8, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
+    pitchVariation: 0
   clickSound:
     clip: {fileID: 0}
     mixerGroup: {fileID: 0}
     volume: 0
+    pitchVariation: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2249,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.7272727, y: 3.6181817}
+  m_Size: {x: 2, y: 2.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2337,8 +2344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.24999999}
-  m_SizeDelta: {x: 0.39999986, y: -0.10000004}
+  m_AnchoredPosition: {x: 0, y: -0.15}
+  m_SizeDelta: {x: -0.0000004172325, y: -0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &786648142
 MonoBehaviour:
@@ -2642,7 +2649,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 2}
+  m_SizeDelta: {x: 15, y: 2}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1004819695
 MonoBehaviour:
@@ -2783,10 +2790,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 06c3142d58edb01489bc5172ed117020, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 0.8
-  personTalkSound:
-    clip: {fileID: 8300000, guid: 482ad0fce8633034ab95ac2732ebf695, type: 3}
-    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
-    volume: 0.5
+    pitchVariation: 0
   personSpriteRenderer: {fileID: 731255975}
   personAnimator: {fileID: 1335883620}
   personMoveAnimator: {fileID: 742126850}
@@ -2797,6 +2801,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
+    pitchVariation: 0
   letterAnimator: {fileID: 2022801316}
   letterMoveAnimator: {fileID: 1876056727}
   letterText: {fileID: 1915157575}
@@ -2814,6 +2819,7 @@ MonoBehaviour:
   events:
   - {fileID: 11400000, guid: b88296864f474bd4eaa4cfd23258c972, type: 2}
   - {fileID: 11400000, guid: c8b1e0ad640e16d48974eb43bdb436a3, type: 2}
+  - {fileID: 11400000, guid: 1188ce0d72f38de4a8a59f57bd22254a, type: 2}
 --- !u!4 &1055019690
 Transform:
   m_ObjectHideFlags: 0
@@ -9273,7 +9279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1384461884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9467,10 +9473,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2398b2f4dbb47e34990dba6f5a1315a8, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
+    pitchVariation: 0
   clickSound:
     clip: {fileID: 0}
     mixerGroup: {fileID: 0}
     volume: 0
+    pitchVariation: 0
 --- !u!1 &1409093442
 GameObject:
   m_ObjectHideFlags: 0
@@ -9730,7 +9738,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.25}
-  m_SizeDelta: {x: 10, y: 1}
+  m_SizeDelta: {x: 15, y: 1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1442663734
 MonoBehaviour:
@@ -14856,7 +14864,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: 10, y: 3}
+  m_SizeDelta: {x: 16, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859968025
 MonoBehaviour:

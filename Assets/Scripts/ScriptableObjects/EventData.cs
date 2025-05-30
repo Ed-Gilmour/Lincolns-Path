@@ -15,6 +15,7 @@ public class EventData : ScriptableObject
     [TextArea] public string decision2Description;
     public StatManager.StatSet decision2StatsChange;
     public EventData decision2FollowingEvent;
+    public bool isDecision1Lincoln;
 }
 
 public enum GameEventType { Person, Letter }
