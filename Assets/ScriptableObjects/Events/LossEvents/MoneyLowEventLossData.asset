@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
+  m_Name: MoneyLowEventLossData
+  m_EditorClassIdentifier: 
+  eventType: 0
+  personTitle: Secretary of State William Seward
+  personSprite: {fileID: 21300000, guid: c927ae922d0912748b55b978ca134ca7, type: 3}
+  personSound:
+    clip: {fileID: 8300000, guid: a9918045551c9954db5a231dcfe1ec65, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
+    volume: 1
+    pitchVariation: 0.2
+  date: 
+  eventDescription: Sir, we can no longer support the war effort due to how little
+    money we have left. We have to surrender to the Confederacy.
+  decision1Description: Oh...
+  decision1StatsChange:
+    military: 0
+    money: 0
+    north: 0
+    south: 0
+  decision1FollowingEvent: {fileID: 0}
+  decision2Description: I guess I spent too much...
+  decision2StatsChange:
+    military: 0
+    money: 0
+    north: 0
+    south: 0
+  decision2FollowingEvent: {fileID: 0}
+  lincolnEventType: 3

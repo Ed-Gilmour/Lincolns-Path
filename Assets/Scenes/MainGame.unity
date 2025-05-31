@@ -2249,7 +2249,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2.47}
+  m_Size: {x: 8.45, y: 10.83}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2807,6 +2807,14 @@ MonoBehaviour:
   letterText: {fileID: 1915157575}
   gameStartDelay: 4
   eventDelay: 2
+  militaryLowEvent: {fileID: 0}
+  militaryHighEvent: {fileID: 0}
+  moneyLowEvent: {fileID: 0}
+  moneyHighEvent: {fileID: 0}
+  northLowEvent: {fileID: 0}
+  northHighEvent: {fileID: 0}
+  southLowEvent: {fileID: 0}
+  southHighEvent: {fileID: 0}
   decisionSounds:
   - {fileID: 562275245}
   - {fileID: 1384461891}

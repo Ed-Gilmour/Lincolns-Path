@@ -18,6 +18,6 @@ public class EventData : ScriptableObject
     public LincolnEventType lincolnEventType;
 }
 
-public enum LincolnEventType { Decision1, Decision2, Neither }
+public enum LincolnEventType { Decision1, Decision2, Neither, LossEvent }
 
-public enum GameEventType { Person, Letter }
+public enum GameEventType { Person, Letter, CutToBlack }

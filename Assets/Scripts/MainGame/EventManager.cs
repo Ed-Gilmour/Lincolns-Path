@@ -25,6 +25,14 @@ public class EventManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI letterText;
     [SerializeField] private float gameStartDelay;
     [SerializeField] private float eventDelay;
+    [SerializeField] private EventData militaryLowEvent;
+    [SerializeField] private EventData militaryHighEvent;
+    [SerializeField] private EventData moneyLowEvent;
+    [SerializeField] private EventData moneyHighEvent;
+    [SerializeField] private EventData northLowEvent;
+    [SerializeField] private EventData northHighEvent;
+    [SerializeField] private EventData southLowEvent;
+    [SerializeField] private EventData southHighEvent;
     [SerializeField] private ButtonSounds[] decisionSounds;
     [SerializeField] private SelectableAnimator[] decisionAnimators;
     [SerializeField] private GameObject[] objectsToActivateOnStart;
