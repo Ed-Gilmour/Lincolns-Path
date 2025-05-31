@@ -38,3 +38,5 @@ MonoBehaviour:
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 3
   additionalDelay: 2
+  screenTextDelay: 2
+  continueTextTime: 3

@@ -248,6 +248,81 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &9508984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9508985}
+  - component: {fileID: 9508987}
+  - component: {fileID: 9508986}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &9508985
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9508984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298111593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9508986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9508984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &9508987
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9508984}
+  m_CullTransparentMesh: 1
 --- !u!1 &60590155
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +827,7 @@ GameObject:
   - component: {fileID: 245363364}
   - component: {fileID: 245363363}
   m_Layer: 5
-  m_Name: IntroText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2781,6 +2856,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   writtenFont: {fileID: 11400000, guid: ddd1a7bac379b004295db03b16a8c303, type: 2}
   typedFont: {fileID: 11400000, guid: b5ab176196363534b9c79560e6326442, type: 2}
+  blackBackground: {fileID: 9508984}
+  fireAudio: {fileID: 708499821}
+  backgroundAnimator: {fileID: 808675404}
+  statsAnimator: {fileID: 1232587560}
   dateAnimator: {fileID: 1167692354}
   dateTypewriterEffect: {fileID: 1060962581}
   decisionsAnimator: {fileID: 247559549}
@@ -2805,7 +2884,6 @@ MonoBehaviour:
   letterAnimator: {fileID: 2022801316}
   letterMoveAnimator: {fileID: 1876056727}
   letterText: {fileID: 1915157575}
-  gameStartDelay: 4
   eventDelay: 2
   militaryLowEvent: {fileID: 11400000, guid: 1bcc913c3e7d69149ac25c74f4e578fd, type: 2}
   militaryHighEvent: {fileID: 11400000, guid: f3fbfb23077ce8f4a8a219586e39a3ca, type: 2}
@@ -3474,7 +3552,7 @@ GameObject:
   - component: {fileID: 1232587559}
   - component: {fileID: 1232587560}
   m_Layer: 5
-  m_Name: MainGameCanvas
+  m_Name: StatsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4131,6 +4209,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9508985}
   - {fileID: 182323242}
   - {fileID: 1154185637}
   m_Father: {fileID: 0}
@@ -4150,6 +4229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335883619}
   - component: {fileID: 1335883620}
+  - component: {fileID: 1335883621}
   m_Layer: 0
   m_Name: PersonEvent
   m_TagString: Untagged
@@ -4197,6 +4277,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1335883621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335883618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917085251a88da241b2b0b5a33cadd15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 283296647}
+  pitchVariation: 0.4
 --- !u!1 &1337869321
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,3 +46,5 @@ MonoBehaviour:
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 2
+  screenTextDelay: 0
+  continueTextTime: 0

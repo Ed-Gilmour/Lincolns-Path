@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class IntroManager : MonoBehaviour
 {
+    public static IntroManager Instance { get; private set; }
     [SerializeField] private MaskSwipeEffect maskSwipeEffect;
     [SerializeField] private TextFadeEffect continueTextFade;
     [SerializeField] private TextMeshProUGUI introText;
@@ -16,16 +17,28 @@ public class IntroManager : MonoBehaviour
     private bool continueTextActive;
 
     [Serializable]
-    class IntroTextData
+    public class IntroTextData
     {
         public AudioManager.AudioClipData textSound;
         public string introText;
         public float continueTextTime;
+
+        public IntroTextData(AudioManager.AudioClipData textSound, string introText, float continueTextTime)
+        {
+            this.textSound = textSound;
+            this.introText = introText;
+            this.continueTextTime = continueTextTime;
+        }
+    }
+
+    void Awake()
+    {
+        Instance = this;
     }
 
     private void Start()
     {
-        StartCoroutine(IntroTextRoutine());
+        StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
     }
 
     private void Update()
@@ -46,14 +59,19 @@ public class IntroManager : MonoBehaviour
         }
     }
 
-    private IEnumerator IntroTextRoutine()
+    public IEnumerator IntroTextRoutine(IntroTextData textData)
     {
-        IntroTextData textData = introData[currentIntroIndex];
+        bool notFromIntro = currentIntroIndex >= introData.Length;
+
         introText.text = textData.introText;
-        currentIntroIndex++;
+
+        if (!notFromIntro)
+        {
+            currentIntroIndex++;
+        }
 
         maskSwipeEffect.SwipeEffectIn();
-        textData.textSound.Play();
+        textData.textSound?.Play();
 
         yield return new WaitUntil(() => !maskSwipeEffect.swipingIn);
 
@@ -63,13 +81,19 @@ public class IntroManager : MonoBehaviour
         yield return new WaitUntil(() => !canSkip);
 
         maskSwipeEffect.SwipeEffectOut();
-        swipeOutSound.Play();
+
+        if (!notFromIntro)
+        {
+            swipeOutSound.Play();
+        }
+
+        if (notFromIntro) yield break;
 
         yield return new WaitUntil(() => !maskSwipeEffect.swipingOut);
 
         if (currentIntroIndex < introData.Length)
         {
-            StartCoroutine(IntroTextRoutine());
+            StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
         }
         else
         {

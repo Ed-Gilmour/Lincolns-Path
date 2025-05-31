@@ -7,6 +7,10 @@ public class EventManager : MonoBehaviour
     public static EventManager Instance { get; private set; }
     [SerializeField] private TMP_FontAsset writtenFont;
     [SerializeField] private TMP_FontAsset typedFont;
+    [SerializeField] private GameObject blackBackground;
+    [SerializeField] private AudioSource fireAudio;
+    [SerializeField] private Animator backgroundAnimator;
+    [SerializeField] private Animator statsAnimator;
     [SerializeField] private Animator dateAnimator;
     [SerializeField] private TypewriterEffect dateTypewriterEffect;
     [SerializeField] private Animator decisionsAnimator;
@@ -116,7 +120,21 @@ public class EventManager : MonoBehaviour
 
         if (currentEvent.eventType == GameEventType.CutToBlack)
         {
+            if (currentEvent.lincolnEventType == LincolnEventType.LossEvent)
+            {
+                blackBackground.SetActive(true);
+                statsAnimator.gameObject.SetActive(false);
+                fireAudio.mute = true;
+                backgroundAnimator.SetTrigger("Hide");
+            }
+
             currentEvent.showSound.Play();
+
+            yield return new WaitForSeconds(currentEvent.screenTextDelay);
+
+            IntroManager.IntroTextData introTextData = new(null, currentEvent.eventDescription, currentEvent.continueTextTime);
+            IntroManager.Instance.StartCoroutine(IntroManager.Instance.IntroTextRoutine(introTextData));
+
             yield break;
         }
 
@@ -169,30 +187,33 @@ public class EventManager : MonoBehaviour
     public void CloseEvent(bool isDecision1)
     {
         StartCoroutine(CloseEventRoutine(isDecision1, currentEvent));
-        if (currentEventIndex < events.Length - 1 && currentEvent.lincolnEventType != LincolnEventType.LossEvent)
+        if (currentEvent.lincolnEventType != LincolnEventType.LossEvent)
         {
-            if (lossEvent == null)
+            if (currentEventIndex < events.Length - 1 || lossEvent != null)
             {
-                if (isDecision1 && currentEvent.decision1FollowingEvent != null)
+                if (lossEvent == null)
                 {
-                    currentEvent = currentEvent.decision1FollowingEvent;
-                }
-                else if (!isDecision1 && currentEvent.decision2FollowingEvent != null)
-                {
-                    currentEvent = currentEvent.decision2FollowingEvent;
+                    if (isDecision1 && currentEvent.decision1FollowingEvent != null)
+                    {
+                        currentEvent = currentEvent.decision1FollowingEvent;
+                    }
+                    else if (!isDecision1 && currentEvent.decision2FollowingEvent != null)
+                    {
+                        currentEvent = currentEvent.decision2FollowingEvent;
+                    }
+                    else
+                    {
+                        currentEventIndex++;
+                        currentEvent = events[currentEventIndex];
+                    }
                 }
                 else
                 {
-                    currentEventIndex++;
-                    currentEvent = events[currentEventIndex];
+                    currentEvent = lossEvent;
                 }
-            }
-            else
-            {
-                currentEvent = lossEvent;
-            }
 
-            StartCoroutine(PlayEventRoutine());
+                StartCoroutine(PlayEventRoutine());
+            }
         }
     }
 

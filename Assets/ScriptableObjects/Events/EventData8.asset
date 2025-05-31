@@ -31,8 +31,8 @@ MonoBehaviour:
     north: -10
     south: 0
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: "Don\u2019t acknowledge his death and appoint General George
-    McClellan as General-in-chief."
+  decision2Description: Don't acknowledge his death and appoint General George McClellan
+    as General-in-chief.
   decision2StatsChange:
     military: -15
     money: 0
@@ -40,3 +40,6 @@ MonoBehaviour:
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 2
+  additionalDelay: 0
+  screenTextDelay: 0
+  continueTextTime: 0
