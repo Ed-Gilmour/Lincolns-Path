@@ -6,7 +6,7 @@ public class EventData : ScriptableObject
     public GameEventType eventType;
     public string personTitle;
     public Sprite personSprite;
-    public AudioManager.AudioClipData personSound;
+    public AudioManager.AudioClipData showSound;
     public string date;
     [TextArea] public string eventDescription;
     [TextArea] public string decision1Description;

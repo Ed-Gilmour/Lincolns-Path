@@ -2807,14 +2807,14 @@ MonoBehaviour:
   letterText: {fileID: 1915157575}
   gameStartDelay: 4
   eventDelay: 2
-  militaryLowEvent: {fileID: 0}
-  militaryHighEvent: {fileID: 0}
-  moneyLowEvent: {fileID: 0}
-  moneyHighEvent: {fileID: 0}
-  northLowEvent: {fileID: 0}
-  northHighEvent: {fileID: 0}
-  southLowEvent: {fileID: 0}
-  southHighEvent: {fileID: 0}
+  militaryLowEvent: {fileID: 11400000, guid: 1bcc913c3e7d69149ac25c74f4e578fd, type: 2}
+  militaryHighEvent: {fileID: 11400000, guid: f3fbfb23077ce8f4a8a219586e39a3ca, type: 2}
+  moneyLowEvent: {fileID: 11400000, guid: f9174ef4a38bffd4db30381bde9a52d5, type: 2}
+  moneyHighEvent: {fileID: 11400000, guid: 43c13f3f7f271fd40a8ac6f56bc11be8, type: 2}
+  northLowEvent: {fileID: 11400000, guid: 5122e9ee0160dbd40bf3d529bb533fd1, type: 2}
+  northHighEvent: {fileID: 11400000, guid: f080f2251ddb35c4faecd0df3b2e6adb, type: 2}
+  southLowEvent: {fileID: 11400000, guid: 27abcdc20c252644ab3fc024a4d79e4f, type: 2}
+  southHighEvent: {fileID: 11400000, guid: 70c7483342277454e9b36cf32a5111af, type: 2}
   decisionSounds:
   - {fileID: 562275245}
   - {fileID: 1384461891}

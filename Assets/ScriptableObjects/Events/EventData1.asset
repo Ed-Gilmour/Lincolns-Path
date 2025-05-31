@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 0
   personTitle: Secretary of War Simon Cameron
   personSprite: {fileID: 21300000, guid: 63c5b79a9a8fbe74ab6d27b308b7bbb8, type: 3}
-  personSound:
+  showSound:
     clip: {fileID: 8300000, guid: 482ad0fce8633034ab95ac2732ebf695, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
@@ -37,4 +37,4 @@ MonoBehaviour:
     north: -15
     south: 10
   decision2FollowingEvent: {fileID: 0}
-  isDecision1Lincoln: 1
+  lincolnEventType: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 0
   personTitle: Secretary of State William Seward
   personSprite: {fileID: 21300000, guid: c927ae922d0912748b55b978ca134ca7, type: 3}
-  personSound:
+  showSound:
     clip: {fileID: 8300000, guid: a9918045551c9954db5a231dcfe1ec65, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
@@ -38,4 +38,4 @@ MonoBehaviour:
     north: 10
     south: -15
   decision2FollowingEvent: {fileID: 0}
-  isDecision1Lincoln: 1
+  lincolnEventType: 0

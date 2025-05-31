@@ -80,6 +80,12 @@ public class EventManager : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelay);
 
+        if (currentEvent.eventType == GameEventType.CutToBlack)
+        {
+            currentEvent.showSound.Play();
+            yield break;
+        }
+
         StatManager.Instance.SetCurrentEvent(currentEvent);
         bool isLetter = currentEvent.eventType == GameEventType.Letter;
         Animator eventAnimator = isLetter ? letterAnimator : personAnimator;
@@ -113,7 +119,7 @@ public class EventManager : MonoBehaviour
 
         if (!isLetter)
         {
-            currentEvent.personSound.Play();
+            currentEvent.showSound.Play();
             personCanvasAnimator.SetTrigger("Show");
         }
 

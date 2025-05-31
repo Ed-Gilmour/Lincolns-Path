@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 1
   personTitle: 
   personSprite: {fileID: 0}
-  personSound:
+  showSound:
     clip: {fileID: 0}
     mixerGroup: {fileID: 0}
     volume: 0
