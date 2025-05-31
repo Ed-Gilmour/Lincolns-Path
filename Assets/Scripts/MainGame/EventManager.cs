@@ -28,6 +28,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private Animator letterMoveAnimator;
     [SerializeField] private TextMeshProUGUI letterText;
     [SerializeField] private float eventDelay;
+    [SerializeField] private float lossDelay;
     [SerializeField] private EventData militaryLowEvent;
     [SerializeField] private EventData militaryHighEvent;
     [SerializeField] private EventData moneyLowEvent;
@@ -215,6 +216,17 @@ public class EventManager : MonoBehaviour
                 StartCoroutine(PlayEventRoutine());
             }
         }
+        else
+        {
+            StartCoroutine(LossRoutine());
+        }
+    }
+
+    private IEnumerator LossRoutine()
+    {
+        yield return new WaitForSeconds(lossDelay);
+        backgroundAnimator.SetTrigger("Hide");
+        statsAnimator.SetTrigger("Hide");
     }
 
     private IEnumerator CloseEventRoutine(bool isDecision1, EventData closingEvent)

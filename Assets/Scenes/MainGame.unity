@@ -2885,6 +2885,7 @@ MonoBehaviour:
   letterMoveAnimator: {fileID: 1876056727}
   letterText: {fileID: 1915157575}
   eventDelay: 2
+  lossDelay: 1
   militaryLowEvent: {fileID: 11400000, guid: 1bcc913c3e7d69149ac25c74f4e578fd, type: 2}
   militaryHighEvent: {fileID: 11400000, guid: f3fbfb23077ce8f4a8a219586e39a3ca, type: 2}
   moneyLowEvent: {fileID: 11400000, guid: f9174ef4a38bffd4db30381bde9a52d5, type: 2}
