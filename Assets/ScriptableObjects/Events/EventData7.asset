@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
+  m_Name: EventData7
+  m_EditorClassIdentifier: 
+  eventType: 1
+  personTitle: 
+  personSprite: {fileID: 0}
+  personSound:
+    clip: {fileID: 0}
+    mixerGroup: {fileID: 0}
+    volume: 0
+    pitchVariation: 0
+  date: November 1, 1861
+  eventDescription: 'Mr. President,
+
+
+    I would like to request retirement status
+    due to declining physical health and disagreements with McClellan.
+
+
+    From
+    General Winfield Scott.'
+  decision1Description: Convince General Winfield Scott to remain in service.
+  decision1StatsChange:
+    military: 10
+    money: 0
+    north: -10
+    south: 0
+  decision1FollowingEvent: {fileID: 11400000, guid: b8097bf1e5d634f48bddef19805d7b22, type: 2}
+  decision2Description: Replace General Winfield Scott as General-in-chief with General
+    McClellan.
+  decision2StatsChange:
+    military: -10
+    money: 0
+    north: 10
+    south: 0
+  decision2FollowingEvent: {fileID: 0}
+  lincolnEventType: 1

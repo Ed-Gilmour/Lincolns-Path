@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
-  m_Name: EventData2
+  m_Name: EventData9
   m_EditorClassIdentifier: 
   eventType: 0
   personTitle: Secretary of State William Seward
@@ -20,21 +20,22 @@ MonoBehaviour:
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
     pitchVariation: 0.2
-  date: April 19, 1861
-  eventDescription: Sir, it would be smart to proclaim a blockade on the ports of
-    seceded states due to the recent events at Fort Sumter.
-  decision1Description: Refuse to proclaim a blockade.
+  date: December 25, 1861
+  eventDescription: Sir, Charles Wilkes, a U.S. Navy Officer, captured two Confederate
+    envoys aboard the British mail ship, the Trent. Britain has demanded an apology
+    and a return of the envoys to avert war.
+  decision1Description: Ignore the British demands.
   decision1StatsChange:
-    military: -10
+    military: 0
+    money: 0
+    north: 10
+    south: -20
+  decision1FollowingEvent: {fileID: 0}
+  decision2Description: Refuse to issue an apology but return the envoys.
+  decision2StatsChange:
+    military: 0
     money: 0
     north: -10
     south: 15
-  decision1FollowingEvent: {fileID: 0}
-  decision2Description: Proclaim a blockade on the ports of seceded states.
-  decision2StatsChange:
-    military: 10
-    money: 0
-    north: 10
-    south: -15
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
