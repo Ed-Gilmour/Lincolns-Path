@@ -21,9 +21,9 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 0.2
   date: 
-  eventDescription: "Lincoln, the Confederacy has won the war and we\u2019re pushing
-    further into the North, surrender to the Confederacy now or face the consequences.
-    Your military is too weak to stop this."
+  eventDescription: Lincoln, the Confederacy has won the war and we're pushing further
+    into the North, surrender to the Confederacy now or face the consequences. Your
+    military is too weak to stop this.
   decision1Description: Oh...
   decision1StatsChange:
     military: 0

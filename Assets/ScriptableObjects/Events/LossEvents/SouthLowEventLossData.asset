@@ -37,3 +37,4 @@ MonoBehaviour:
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 3
+  additionalDelay: 2

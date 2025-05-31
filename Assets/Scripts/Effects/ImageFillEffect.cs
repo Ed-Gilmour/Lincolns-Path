@@ -61,6 +61,15 @@ public class ImageFillEffect : MonoBehaviour
 
     public void PlayFillAnimation(float change)
     {
+        if (fillImage.fillAmount + change > 1f)
+        {
+            change = 1f - fillImage.fillAmount;
+        }
+        else if (fillImage.fillAmount + change < 0f)
+        {
+            change = -fillImage.fillAmount;
+        }
+
         isPlaying = true;
         totalFillTime = 0f;
         fillChange = change;

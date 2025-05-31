@@ -23,7 +23,6 @@ public class EventManager : MonoBehaviour
     [SerializeField] private Animator letterAnimator;
     [SerializeField] private Animator letterMoveAnimator;
     [SerializeField] private TextMeshProUGUI letterText;
-    [SerializeField] private float gameStartDelay;
     [SerializeField] private float eventDelay;
     [SerializeField] private EventData militaryLowEvent;
     [SerializeField] private EventData militaryHighEvent;
@@ -38,6 +37,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameObject[] objectsToActivateOnStart;
     [SerializeField] private EventData[] events;
     private EventData currentEvent;
+    private EventData lossEvent;
     private int currentEventIndex;
     private const float writtenLineSpacing = -30f;
     private const float typedLineSpacing = -5f;
@@ -45,11 +45,45 @@ public class EventManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        StatManager.Instance.onStatsChanged += OnStatsChanged;
     }
 
     private void Update()
     {
         UpdateAccessibilityFont();
+    }
+
+    private void OnStatsChanged(StatManager.StatSet statSet)
+    {
+        EventData lossEventData = GetEventDataForLoss(statSet);
+        if (lossEventData != null)
+        {
+            lossEvent = lossEventData;
+        }
+    }
+
+    private EventData GetEventDataForLoss(StatManager.StatSet statSet)
+    {
+        EventData lossEventData = null;
+
+        if (statSet.military <= 0f)
+            lossEventData = militaryLowEvent;
+        else if (statSet.military >= StatManager.MaxStat)
+            lossEventData = militaryHighEvent;
+        else if (statSet.money <= 0)
+            lossEventData = moneyLowEvent;
+        else if (statSet.money >= StatManager.MaxStat)
+            lossEventData = moneyHighEvent;
+        else if (statSet.north <= 0)
+            lossEventData = northLowEvent;
+        else if (statSet.north >= StatManager.MaxStat)
+            lossEventData = northHighEvent;
+        else if (statSet.south <= 0)
+            lossEventData = southLowEvent;
+        else if (statSet.south >= StatManager.MaxStat)
+            lossEventData = southHighEvent;
+
+        return lossEventData;
     }
 
     private void UpdateAccessibilityFont()
@@ -73,12 +107,12 @@ public class EventManager : MonoBehaviour
             obj.SetActive(true);
         }
         currentEvent = events[currentEventIndex];
-        StartCoroutine(PlayEventRoutine(gameStartDelay));
+        StartCoroutine(PlayEventRoutine());
     }
 
-    private IEnumerator PlayEventRoutine(float startDelay)
+    private IEnumerator PlayEventRoutine()
     {
-        yield return new WaitForSeconds(startDelay);
+        yield return new WaitForSeconds(eventDelay + currentEvent.additionalDelay);
 
         if (currentEvent.eventType == GameEventType.CutToBlack)
         {
@@ -123,38 +157,48 @@ public class EventManager : MonoBehaviour
             personCanvasAnimator.SetTrigger("Show");
         }
 
-        dateTypewriterEffect.PlayTypewriterEffect(currentEvent.date);
+        if (currentEvent.date.Length > 0)
+        {
+            dateTypewriterEffect.PlayTypewriterEffect(currentEvent.date);
+            dateAnimator.SetTrigger("Show");
+        }
 
         decisionsAnimator.SetTrigger("Show");
-        dateAnimator.SetTrigger("Show");
     }
 
     public void CloseEvent(bool isDecision1)
     {
-        StartCoroutine(CloseEventRoutine(isDecision1));
-        if (currentEventIndex < events.Length - 1)
+        StartCoroutine(CloseEventRoutine(isDecision1, currentEvent));
+        if (currentEventIndex < events.Length - 1 && currentEvent.lincolnEventType != LincolnEventType.LossEvent)
         {
-            if (isDecision1 && currentEvent.decision1FollowingEvent != null)
+            if (lossEvent == null)
             {
-                currentEvent = currentEvent.decision1FollowingEvent;
-            }
-            else if (!isDecision1 && currentEvent.decision2FollowingEvent != null)
-            {
-                currentEvent = currentEvent.decision2FollowingEvent;
+                if (isDecision1 && currentEvent.decision1FollowingEvent != null)
+                {
+                    currentEvent = currentEvent.decision1FollowingEvent;
+                }
+                else if (!isDecision1 && currentEvent.decision2FollowingEvent != null)
+                {
+                    currentEvent = currentEvent.decision2FollowingEvent;
+                }
+                else
+                {
+                    currentEventIndex++;
+                    currentEvent = events[currentEventIndex];
+                }
             }
             else
             {
-                currentEventIndex++;
-                currentEvent = events[currentEventIndex];
+                currentEvent = lossEvent;
             }
 
-            StartCoroutine(PlayEventRoutine(eventDelay));
+            StartCoroutine(PlayEventRoutine());
         }
     }
 
-    private IEnumerator CloseEventRoutine(bool isDecision1)
+    private IEnumerator CloseEventRoutine(bool isDecision1, EventData closingEvent)
     {
-        bool isLetter = currentEvent.eventType == GameEventType.Letter;
+        bool isLetter = closingEvent.eventType == GameEventType.Letter;
 
         if (!isLetter)
         {
@@ -162,7 +206,11 @@ public class EventManager : MonoBehaviour
         }
 
         decisionsAnimator.SetTrigger("Hide");
-        dateAnimator.SetTrigger("Hide");
+
+        if (closingEvent.date.Length > 0)
+        {
+            dateAnimator.SetTrigger("Hide");
+        }
 
         Animator eventAnimator = isLetter ? letterAnimator : personAnimator;
 

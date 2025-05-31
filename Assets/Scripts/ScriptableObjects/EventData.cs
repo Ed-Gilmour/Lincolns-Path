@@ -16,6 +16,7 @@ public class EventData : ScriptableObject
     public StatManager.StatSet decision2StatsChange;
     public EventData decision2FollowingEvent;
     public LincolnEventType lincolnEventType;
+    public float additionalDelay;
 }
 
 public enum LincolnEventType { Decision1, Decision2, Neither, LossEvent }

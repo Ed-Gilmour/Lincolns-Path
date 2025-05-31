@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class StatManager : MonoBehaviour
@@ -20,9 +21,10 @@ public class StatManager : MonoBehaviour
     private readonly Vector2 signalSmallSize = new(8f, 8f);
     private readonly Vector2 signalLargeSize = new(12f, 12f);
     private const int minChangeForLarge = 25;
-    private const int maxStat = 100;
+    public const int MaxStat = 100;
+    public Action<StatSet> onStatsChanged;
 
-    [System.Serializable]
+    [Serializable]
     public class StatSet
     {
         public int military;
@@ -30,7 +32,7 @@ public class StatManager : MonoBehaviour
         public int north;
         public int south;
 
-        public StatSet(int military = maxStat / 2, int money = maxStat / 2, int north = maxStat / 2, int south = maxStat / 2)
+        public StatSet(int military = MaxStat / 2, int money = MaxStat / 2, int north = MaxStat / 2, int south = MaxStat / 2)
         {
             this.military = military;
             this.money = money;
@@ -58,10 +60,11 @@ public class StatManager : MonoBehaviour
     {
         StatSet statChange = isDecision1 ? currentEventData.decision1StatsChange : currentEventData.decision2StatsChange;
         stats += statChange;
-        militaryFillEffect.PlayFillAnimation((float)statChange.military / maxStat);
-        moneyFillEffect.PlayFillAnimation((float)statChange.money / maxStat);
-        northFillEffect.PlayFillAnimation((float)statChange.north / maxStat);
-        southFillEffect.PlayFillAnimation((float)statChange.south / maxStat);
+        onStatsChanged?.Invoke(stats);
+        militaryFillEffect.PlayFillAnimation((float)statChange.military / MaxStat);
+        moneyFillEffect.PlayFillAnimation((float)statChange.money / MaxStat);
+        northFillEffect.PlayFillAnimation((float)statChange.north / MaxStat);
+        southFillEffect.PlayFillAnimation((float)statChange.south / MaxStat);
     }
 
     public void SetStatSignals(bool isDecision1)
