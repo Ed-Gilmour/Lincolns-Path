@@ -51,11 +51,8 @@ public class EventManager : MonoBehaviour
     {
         Instance = this;
         StatManager.Instance.onStatsChanged += OnStatsChanged;
-    }
-
-    private void Update()
-    {
-        UpdateAccessibilityFont();
+        UpdateAccessibilityFont(PauseMenu.Instance.GetIsAccessibilityFont());
+        PauseMenu.Instance.OnAccessibilityFontChanged += UpdateAccessibilityFont;
     }
 
     private void OnStatsChanged(StatManager.StatSet statSet)
@@ -91,9 +88,9 @@ public class EventManager : MonoBehaviour
         return lossEventData;
     }
 
-    private void UpdateAccessibilityFont()
+    private void UpdateAccessibilityFont(bool isOn)
     {
-        if (PauseMenu.Instance.GetIsAccessibilityFont())
+        if (isOn)
         {
             letterText.font = typedFont;
             letterText.lineSpacing = typedLineSpacing;

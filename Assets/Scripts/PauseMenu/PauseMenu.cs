@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Toggle accessibilityToggle;
     private bool isPauseMenuOpen;
     private bool isAccessibilityFont;
+    public event Action<bool> OnAccessibilityFontChanged;
 
     private void Awake()
     {
@@ -51,6 +53,7 @@ public class PauseMenu : MonoBehaviour
         isAccessibilityFont = isOn;
         PlayerPrefs.SetString("AccessibilityFont", isAccessibilityFont.ToString());
         PlayerPrefs.Save();
+        OnAccessibilityFontChanged?.Invoke(isOn);
     }
 
     public bool GetIsAccessibilityFont()
