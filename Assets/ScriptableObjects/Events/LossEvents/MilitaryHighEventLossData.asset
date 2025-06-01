@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MilitaryHighEventLossData
   m_EditorClassIdentifier: 
   eventType: 0
-  personTitle: General George McClellan
+  title: General George McClellan
   personSprite: {fileID: 21300000, guid: a6ac49d8422d5604595cab420ad614c9, type: 3}
   showSound:
     clip: {fileID: 8300000, guid: 358ac9941ad67fe43a6c650b8a4cbc7b, type: 3}
@@ -21,6 +21,7 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 0.2
   date: 
+  dateShort: 
   eventDescription: Lincoln, I have half the Union army with me. You grew your military
     too strong and they respond to me now. Surrender, or face the consequences.
   decision1Description: Oh...
@@ -38,3 +39,6 @@ MonoBehaviour:
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 3
+  additionalDelay: 0
+  screenTextDelay: 0
+  continueTextTime: 0

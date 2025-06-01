@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EventData8
   m_EditorClassIdentifier: 
   eventType: 0
-  personTitle: Secretary of War Simon Cameron
+  title: Secretary of War Simon Cameron
   personSprite: {fileID: 21300000, guid: 63c5b79a9a8fbe74ab6d27b308b7bbb8, type: 3}
   showSound:
     clip: {fileID: 8300000, guid: 482ad0fce8633034ab95ac2732ebf695, type: 3}
@@ -21,6 +21,7 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 0.2
   date: November 29, 1861
+  dateShort: 11/29/61
   eventDescription: Mr. President, after convincing General Winfield Scott to continue
     serving he has died of an unknown health condition.
   decision1Description: Issue a public apology and appoint General Geoge McClellan

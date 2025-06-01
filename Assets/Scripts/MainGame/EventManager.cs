@@ -157,7 +157,7 @@ public class EventManager : MonoBehaviour
         if (!isLetter)
         {
             personSpriteRenderer.sprite = currentEvent.personSprite;
-            personTitleText.text = currentEvent.personTitle;
+            personTitleText.text = currentEvent.title;
         }
 
         eventAnimator.SetTrigger("Open");

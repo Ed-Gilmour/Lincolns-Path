@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SouthLowEventLossData
   m_EditorClassIdentifier: 
   eventType: 2
-  personTitle: 
+  title: 
   personSprite: {fileID: 0}
   showSound:
     clip: {fileID: 8300000, guid: ee3f615110e240a4dac9c2a1194a3e15, type: 3}
@@ -21,6 +21,7 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 0
   date: 
+  dateShort: 
   eventDescription: You've been assassinated due to anger in the South.
   decision1Description: 
   decision1StatsChange:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EventData0
   m_EditorClassIdentifier: 
   eventType: 1
-  personTitle: 
+  title: Letter from Major Robert Anderson
   personSprite: {fileID: 0}
   showSound:
     clip: {fileID: 0}
@@ -21,12 +21,13 @@ MonoBehaviour:
     volume: 0
     pitchVariation: 0
   date: March 4, 1861
+  dateShort: 3/4/61
   eventDescription: 'Mr. President,
 
 
     The provisions at Fort Sumter will be exhausted
     in 4-6 weeks and we need a large land and naval force of 20,000 men to reinforce
-    the fort.
+    the fort
 
 
     From Major Robert Anderson.'

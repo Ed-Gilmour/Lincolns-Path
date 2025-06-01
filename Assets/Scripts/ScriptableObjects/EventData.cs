@@ -4,10 +4,11 @@ using UnityEngine;
 public class EventData : ScriptableObject
 {
     public GameEventType eventType;
-    public string personTitle;
+    public string title;
     public Sprite personSprite;
     public AudioManager.AudioClipData showSound;
     public string date;
+    public string dateShort;
     [TextArea] public string eventDescription;
     [TextArea] public string decision1Description;
     public StatManager.StatSet decision1StatsChange;

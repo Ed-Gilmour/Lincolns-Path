@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EventData3
   m_EditorClassIdentifier: 
   eventType: 0
-  personTitle: David Homer Bates of the War Department Telegraph Office
+  title: David Homer Bates of the War Department Telegraph Office
   personSprite: {fileID: 21300000, guid: ca16a279d35cf19458370ce34d0ace2a, type: 3}
   showSound:
     clip: {fileID: 8300000, guid: a9df0d14c54091046930015ad4924a05, type: 3}
@@ -21,6 +21,7 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 0.2
   date: May 24, 1861
+  dateShort: 5/24/61
   eventDescription: Mr. President, I regret to inform you that Colonel Elmer Ellsworth
     was assassinated in Virginia.
   decision1Description: Hold a funeral in the white house.
@@ -38,3 +39,6 @@ MonoBehaviour:
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
+  additionalDelay: 0
+  screenTextDelay: 0
+  continueTextTime: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EventData7
   m_EditorClassIdentifier: 
   eventType: 1
-  personTitle: 
+  title: Letter from General Winfield Scott
   personSprite: {fileID: 0}
   showSound:
     clip: {fileID: 0}
@@ -21,6 +21,7 @@ MonoBehaviour:
     volume: 0
     pitchVariation: 0
   date: November 1, 1861
+  dateShort: 11/1/61
   eventDescription: 'Mr. President,
 
 
@@ -29,7 +30,7 @@ MonoBehaviour:
 
 
     From
-    General Winfield Scott.'
+    General Winfield Scott'
   decision1Description: Convince General Winfield Scott to remain in service.
   decision1StatsChange:
     military: 10
@@ -46,3 +47,6 @@ MonoBehaviour:
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
+  additionalDelay: 0
+  screenTextDelay: 0
+  continueTextTime: 0
