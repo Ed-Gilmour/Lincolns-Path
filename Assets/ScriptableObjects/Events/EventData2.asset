@@ -33,8 +33,11 @@ MonoBehaviour:
   decision2Description: Proclaim a blockade on the ports of seceded states.
   decision2StatsChange:
     military: 10
-    money: 0
+    money: -10
     north: 10
     south: -15
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
+  additionalDelay: 0
+  screenTextDelay: 0
+  continueTextTime: 0
