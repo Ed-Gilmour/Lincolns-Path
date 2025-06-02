@@ -164,7 +164,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 072fcf8ce400ab843b7d44d40b0caf0c, type: 3}
   m_Resource: {fileID: 8300000, guid: 072fcf8ce400ab843b7d44d40b0caf0c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -891,20 +891,20 @@ MonoBehaviour:
   swipeOutSound:
     clip: {fileID: 8300000, guid: c5f9b3ba09cea5c4480f0e02f3563b3d, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
-    volume: 0.8
+    volume: 1
     pitchVariation: 0
   introData:
   - textSound:
       clip: {fileID: 8300000, guid: 15bce47ae5a4d994a8db5b55c58d3e09, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
-      volume: 0.7
+      volume: 1
       pitchVariation: 0
     introText: The date is March 4, 1861.
     continueTextTime: 2
   - textSound:
       clip: {fileID: 8300000, guid: 125111a4aa1e821428dce7352e49b59a, type: 3}
       mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
-      volume: 0.8
+      volume: 1
       pitchVariation: 0
     introText: Tensions in the Union are high as seven states in the South have seceded,
       the Confederacy is formed, and a Civil War seems near.
@@ -1759,7 +1759,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 06c3142d58edb01489bc5172ed117020, type: 3}
   m_Resource: {fileID: 8300000, guid: 06c3142d58edb01489bc5172ed117020, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4989,7 +4989,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
   m_Resource: {fileID: 8300000, guid: ee14e753e88ecfc4298c5c82857c9e6d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
