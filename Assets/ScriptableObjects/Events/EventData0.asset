@@ -27,10 +27,10 @@ MonoBehaviour:
 
     The provisions at Fort Sumter will be exhausted
     in 4-6 weeks and we need a large land and naval force of 20,000 men to reinforce
-    the fort
+    the fort.
 
 
-    From Major Robert Anderson.'
+    From Major Robert Anderson'
   decision1Description: Resupply the Fort.
   decision1StatsChange:
     military: 10

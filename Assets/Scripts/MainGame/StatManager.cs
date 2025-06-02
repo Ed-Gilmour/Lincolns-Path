@@ -20,7 +20,7 @@ public class StatManager : MonoBehaviour
     private EventData currentEventData;
     private readonly Vector2 signalSmallSize = new(8f, 8f);
     private readonly Vector2 signalLargeSize = new(12f, 12f);
-    private const int minChangeForLarge = 25;
+    private const int minChangeForLarge = 20;
     public const int MaxStat = 100;
     public Action<StatSet> onStatsChanged;
 

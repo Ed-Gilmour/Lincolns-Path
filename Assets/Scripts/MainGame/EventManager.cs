@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -44,6 +45,7 @@ public class EventManager : MonoBehaviour
     private EventData currentEvent;
     private EventData lossEvent;
     private int currentEventIndex;
+    private List<bool> allDecisions = new();
     private const float writtenLineSpacing = -30f;
     private const float typedLineSpacing = -5f;
 
@@ -53,6 +55,15 @@ public class EventManager : MonoBehaviour
         StatManager.Instance.onStatsChanged += OnStatsChanged;
         UpdateAccessibilityFont(PauseMenu.Instance.GetIsAccessibilityFont());
         PauseMenu.Instance.OnAccessibilityFontChanged += UpdateAccessibilityFont;
+        IntroManager.Instance.OnFinishedSwipeOut += DisplayTimeline;
+    }
+
+    private void DisplayTimeline(bool notFromIntro)
+    {
+        if (notFromIntro)
+        {
+            TimelineManager.Instance.DisplayTimeline(events, allDecisions);
+        }
     }
 
     private void OnStatsChanged(StatManager.StatSet statSet)
@@ -86,6 +97,11 @@ public class EventManager : MonoBehaviour
             lossEventData = southHighEvent;
 
         return lossEventData;
+    }
+
+    public EventData GetLossEvent()
+    {
+        return lossEvent;
     }
 
     private void UpdateAccessibilityFont(bool isOn)
@@ -184,6 +200,7 @@ public class EventManager : MonoBehaviour
 
     public void CloseEvent(bool isDecision1)
     {
+        allDecisions.Add(isDecision1);
         StartCoroutine(CloseEventRoutine(isDecision1, currentEvent));
         if (currentEvent.lincolnEventType != LincolnEventType.LossEvent)
         {
@@ -224,6 +241,12 @@ public class EventManager : MonoBehaviour
         yield return new WaitForSeconds(lossDelay);
         backgroundAnimator.SetTrigger("Hide");
         statsAnimator.SetTrigger("Hide");
+        yield return new WaitUntil(() =>
+        {
+            AnimatorStateInfo stateInfo = backgroundAnimator.GetCurrentAnimatorStateInfo(0);
+            return stateInfo.IsName("MainGameFadeOut") && stateInfo.normalizedTime >= 1f;
+        });
+        DisplayTimeline(true);
     }
 
     private IEnumerator CloseEventRoutine(bool isDecision1, EventData closingEvent)

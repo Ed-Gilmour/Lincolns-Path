@@ -15,6 +15,7 @@ public class IntroManager : MonoBehaviour
     private int currentIntroIndex;
     private bool canSkip;
     private bool continueTextActive;
+    public event Action<bool> OnFinishedSwipeOut;
 
     [Serializable]
     public class IntroTextData
@@ -87,17 +88,20 @@ public class IntroManager : MonoBehaviour
             swipeOutSound.Play();
         }
 
-        if (notFromIntro) yield break;
-
         yield return new WaitUntil(() => !maskSwipeEffect.swipingOut);
 
-        if (currentIntroIndex < introData.Length)
+        OnFinishedSwipeOut?.Invoke(notFromIntro);
+
+        if (!notFromIntro)
         {
-            StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
-        }
-        else
-        {
-            EventManager.Instance.StartGame();
+            if (currentIntroIndex < introData.Length)
+            {
+                StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
+            }
+            else
+            {
+                EventManager.Instance.StartGame();
+            }
         }
     }
 
