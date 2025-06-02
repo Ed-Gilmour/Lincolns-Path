@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TimelineManager : MonoBehaviour
 {
     public static TimelineManager Instance { get; private set; }
-    [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private ToggleGroup toggleGroup;
     [SerializeField] private Transform contentTransform;
     [SerializeField] private Animator timelineAnimator;
@@ -53,7 +52,6 @@ public class TimelineManager : MonoBehaviour
             }
         }
         timelineAnimator.gameObject.SetActive(true);
-        scrollbar.value = 0f;
     }
 
     private void CreateEventToggle(EventData eventData, bool isDecision1, bool isFirst = false)
