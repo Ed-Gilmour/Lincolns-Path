@@ -26,22 +26,22 @@ public class TimelineManager : MonoBehaviour
 
     public void DisplayTimeline(EventData[] events, List<bool> decisions)
     {
-        UpdateTimelineDisplay(events[0], decisions[0], true);
+        UpdateTimelineDisplay(events[0], decisions[0], true, false);
         for (int i = 0; i < decisions.Count; i++)
         {
             EventData currentEvent = i == decisions.Count - 1 ? EventManager.Instance.GetLossEvent() : events[i];
-            CreateEventToggle(currentEvent, decisions[i], i == 0);
+            CreateEventToggle(currentEvent, decisions[i], false, i == 0);
             while (currentEvent.decision1FollowingEvent != null || currentEvent.decision2FollowingEvent != null)
             {
-                if (currentEvent.decision1FollowingEvent != null && decisions[i])
+                if (currentEvent.decision1FollowingEvent != null && currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither)
                 {
-                    CreateEventToggle(currentEvent.decision1FollowingEvent, decisions[i + 1]);
+                    CreateEventToggle(currentEvent.decision1FollowingEvent, decisions[i + 1], !decisions[i]);
                     decisions.RemoveAt(i + 1);
                     currentEvent = currentEvent.decision1FollowingEvent;
                 }
-                else if (currentEvent.decision2FollowingEvent != null && !decisions[i])
+                else if (currentEvent.decision2FollowingEvent != null && currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither)
                 {
-                    CreateEventToggle(currentEvent.decision2FollowingEvent, decisions[i + 1]);
+                    CreateEventToggle(currentEvent.decision2FollowingEvent, decisions[i + 1], decisions[i]);
                     decisions.RemoveAt(i + 1);
                     currentEvent = currentEvent.decision2FollowingEvent;
                 }
@@ -54,14 +54,15 @@ public class TimelineManager : MonoBehaviour
         timelineAnimator.gameObject.SetActive(true);
     }
 
-    private void CreateEventToggle(EventData eventData, bool isDecision1, bool isFirst = false)
+    private void CreateEventToggle(EventData eventData, bool isDecision1, bool shouldHave, bool isFirst = false)
     {
         TimelineEventToggle timelineEvent = Instantiate(eventTogglePrefab, contentTransform).GetComponent<TimelineEventToggle>();
         Toggle timelineEventToggle = timelineEvent.GetComponent<Toggle>();
         timelineEventToggle.group = toggleGroup;
         bool bothChose1 = eventData.lincolnEventType == LincolnEventType.Decision1 && isDecision1;
         bool bothChose2 = eventData.lincolnEventType == LincolnEventType.Decision2 && !isDecision1;
-        timelineEvent.SetTimelineToggle(bothChose1 || bothChose2, eventData.lincolnEventType == LincolnEventType.Neither || eventData.lincolnEventType == LincolnEventType.LossEvent, eventData.dateShort);
+        bool notReal = eventData.lincolnEventType == LincolnEventType.Neither || eventData.lincolnEventType == LincolnEventType.LossEvent;
+        timelineEvent.SetTimelineToggle(bothChose1 || bothChose2, shouldHave, notReal, eventData.dateShort);
         timelineEventToggle.onValueChanged.AddListener((isOn) =>
         {
             if (previousSelectedToggle == timelineEventToggle) return;
@@ -73,7 +74,7 @@ public class TimelineManager : MonoBehaviour
 
             timelineEventToggle.targetGraphic.raycastTarget = false;
             previousSelectedToggle = timelineEventToggle;
-            UpdateTimelineDisplay(eventData, isDecision1, isOn);
+            UpdateTimelineDisplay(eventData, isDecision1, isOn, shouldHave);
         });
         if (isFirst)
         {
@@ -82,7 +83,7 @@ public class TimelineManager : MonoBehaviour
         }
     }
 
-    private void UpdateTimelineDisplay(EventData eventData, bool isDecision1, bool isOn)
+    private void UpdateTimelineDisplay(EventData eventData, bool isDecision1, bool isOn, bool noDecision)
     {
         if (!isOn) return;
 
@@ -96,6 +97,21 @@ public class TimelineManager : MonoBehaviour
         {
             descision1ChoseText.text = string.Empty;
             descision2ChoseText.text = string.Empty;
+            return;
+        }
+
+        if (noDecision)
+        {
+            if (eventData.lincolnEventType == LincolnEventType.Decision1)
+            {
+                descision1ChoseText.text = "Lincoln chose";
+                descision2ChoseText.text = "Lincoln didn't choose";
+            }
+            else
+            {
+                descision1ChoseText.text = "Lincoln didn't choose";
+                descision2ChoseText.text = "Lincoln chose";
+            }
             return;
         }
 

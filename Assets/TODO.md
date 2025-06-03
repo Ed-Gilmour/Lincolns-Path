@@ -1,8 +1,11 @@
-Include events that should've happened? Fix non-assassination loss events not appearing in the timeline
-Timeline restart / exit to menu
-Restart / exit to menu in options
-Italics for names of things like the Trent
+Timeline Restart and Options Restart and Exit
+Don't allow options while loading
+Button padding
+Handle assassination key saying didn't actually happen although technically did
+Italics for names of things like the Trent (what about people?)
+
 Implement all events
+
 Game Intro/Tutorial
 Choice to go back to place on loss
 Save where you are in the game

@@ -39,6 +39,7 @@ public class IntroManager : MonoBehaviour
 
     private void Start()
     {
+        SceneLoader.Instance.Cancel();
         StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
     }
 
