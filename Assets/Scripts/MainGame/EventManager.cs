@@ -278,9 +278,4 @@ public class EventManager : MonoBehaviour
         });
         eventAnimator.gameObject.SetActive(false);
     }
-
-    public void RestartGame()
-    {
-
-    }
 }

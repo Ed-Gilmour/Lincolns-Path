@@ -37,10 +37,20 @@ public class IntroManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        SceneLoader.Instance.Cancel();
-        StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
+        SceneLoader.Instance.FadeOut();
+
+        yield return new WaitForSeconds(1f);
+
+        if (!PauseMenu.Instance.restarted)
+        {
+            StartCoroutine(IntroTextRoutine(introData[currentIntroIndex]));
+        }
+        else
+        {
+            EventManager.Instance.StartGame();
+        }
     }
 
     private void Update()

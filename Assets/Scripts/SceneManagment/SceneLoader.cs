@@ -35,10 +35,12 @@ public class SceneLoader : MonoBehaviour
     {
         fadeAnimator.SetTrigger("Fade");
         yield return new WaitForSeconds(delay);
+        PauseMenu.Instance.SetPauseMenuOpen(false);
+        PauseMenu.Instance.optionsMenu.SetActive(false);
         SceneManager.LoadScene(scene);
     }
 
-    private void FadeOut()
+    public void FadeOut()
     {
         fadeAnimator.SetTrigger("FadeOut");
     }

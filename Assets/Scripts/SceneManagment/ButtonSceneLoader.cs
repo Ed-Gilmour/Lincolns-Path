@@ -8,4 +8,9 @@ public class ButtonSceneLoader : MonoBehaviour
     {
         SceneLoader.Instance.LoadScene(scene, delay);
     }
+
+    public void SetRestarted()
+    {
+        PauseMenu.Instance.restarted = true;
+    }
 }

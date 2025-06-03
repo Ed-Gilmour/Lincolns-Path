@@ -2,13 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static PauseMenu Instance { get; private set; }
+    public GameObject optionsMenu;
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Toggle accessibilityToggle;
+    [SerializeField] private GameObject[] mainGameObjects;
+    [HideInInspector] public bool restarted;
     private bool isPauseMenuOpen;
     private bool isAccessibilityFont;
     public event Action<bool> OnAccessibilityFontChanged;
@@ -17,6 +21,17 @@ public class PauseMenu : MonoBehaviour
     {
         Singleton();
         InitializeUI();
+        SceneManager.activeSceneChanged += OnSceneChange;
+    }
+
+    private void OnSceneChange(Scene current, Scene next)
+    {
+        foreach (GameObject obj in mainGameObjects)
+        {
+            if (this == null || obj == null) continue;
+
+            obj.SetActive(SceneManager.GetActiveScene().buildIndex == 1);
+        }
     }
 
     private void InitializeUI()
@@ -32,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Instance.restarted = false;
             Destroy(gameObject);
         }
         else
