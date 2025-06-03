@@ -29,7 +29,7 @@ public class TimelineManager : MonoBehaviour
         UpdateTimelineDisplay(events[0], decisions[0], true);
         for (int i = 0; i < decisions.Count; i++)
         {
-            EventData currentEvent = i > events.Length - 1 ? EventManager.Instance.GetLossEvent() : events[i];
+            EventData currentEvent = i == decisions.Count - 1 ? EventManager.Instance.GetLossEvent() : events[i];
             CreateEventToggle(currentEvent, decisions[i], i == 0);
             while (currentEvent.decision1FollowingEvent != null || currentEvent.decision2FollowingEvent != null)
             {
@@ -61,7 +61,7 @@ public class TimelineManager : MonoBehaviour
         timelineEventToggle.group = toggleGroup;
         bool bothChose1 = eventData.lincolnEventType == LincolnEventType.Decision1 && isDecision1;
         bool bothChose2 = eventData.lincolnEventType == LincolnEventType.Decision2 && !isDecision1;
-        timelineEvent.SetTimelineToggle(bothChose1 || bothChose2, eventData.dateShort);
+        timelineEvent.SetTimelineToggle(bothChose1 || bothChose2, eventData.lincolnEventType == LincolnEventType.Neither || eventData.lincolnEventType == LincolnEventType.LossEvent, eventData.dateShort);
         timelineEventToggle.onValueChanged.AddListener((isOn) =>
         {
             if (previousSelectedToggle == timelineEventToggle) return;
@@ -91,6 +91,14 @@ public class TimelineManager : MonoBehaviour
         dateText.text = eventData.date;
         descision1Text.text = eventData.decision1Description;
         descision2Text.text = eventData.decision2Description;
+
+        if (eventData.lincolnEventType == LincolnEventType.LossEvent && eventData.eventType == GameEventType.CutToBlack)
+        {
+            descision1ChoseText.text = string.Empty;
+            descision2ChoseText.text = string.Empty;
+            return;
+        }
+
         if (isDecision1)
         {
             descision1ChoseText.text = "You";
@@ -99,10 +107,15 @@ public class TimelineManager : MonoBehaviour
                 descision1ChoseText.text += " and Lincoln chose";
                 descision2ChoseText.text = "Neither chose";
             }
-            else
+            else if (eventData.lincolnEventType == LincolnEventType.Decision2)
             {
                 descision1ChoseText.text += " chose";
                 descision2ChoseText.text = "Lincoln chose";
+            }
+            else
+            {
+                descision1ChoseText.text += " chose";
+                descision2ChoseText.text = "You didn't choose";
             }
         }
         else
@@ -113,10 +126,15 @@ public class TimelineManager : MonoBehaviour
                 descision2ChoseText.text += " and Lincoln chose";
                 descision1ChoseText.text = "Neither chose";
             }
-            else
+            else if (eventData.lincolnEventType == LincolnEventType.Decision1)
             {
                 descision2ChoseText.text += " chose";
                 descision1ChoseText.text = "Lincoln chose";
+            }
+            else
+            {
+                descision2ChoseText.text += " chose";
+                descision1ChoseText.text = "You didn't choose";
             }
         }
     }

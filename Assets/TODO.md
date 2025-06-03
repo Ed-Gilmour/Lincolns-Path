@@ -1,4 +1,5 @@
-Timeline restart / exit to menu (Handle events that didn't happen (different icon and key) and loss event properly (assassination too))
+Include events that should've happened? Fix non-assassination loss events not appearing in the timeline
+Timeline restart / exit to menu
 Restart / exit to menu in options
 Italics for names of things like the Trent
 Implement all events

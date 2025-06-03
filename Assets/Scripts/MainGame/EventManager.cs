@@ -134,6 +134,8 @@ public class EventManager : MonoBehaviour
 
         if (currentEvent.eventType == GameEventType.CutToBlack)
         {
+            allDecisions.Add(true);
+
             if (currentEvent.lincolnEventType == LincolnEventType.LossEvent)
             {
                 blackBackground.SetActive(true);

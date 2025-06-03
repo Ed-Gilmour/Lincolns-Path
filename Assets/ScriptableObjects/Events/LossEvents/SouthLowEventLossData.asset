@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SouthLowEventLossData
   m_EditorClassIdentifier: 
   eventType: 2
-  title: 
+  title: Assassination
   personSprite: {fileID: 0}
   showSound:
     clip: {fileID: 8300000, guid: ee3f615110e240a4dac9c2a1194a3e15, type: 3}
