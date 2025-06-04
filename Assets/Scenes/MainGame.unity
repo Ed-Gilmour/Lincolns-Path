@@ -3868,7 +3868,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.45, y: 10.83}
+  m_Size: {x: 1.95, y: 2.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -4548,6 +4548,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f56e45d4d1376b149bb61209df284c4e, type: 2}
   - {fileID: 11400000, guid: 8fccff366eabf0b459f3453e7f062283, type: 2}
   - {fileID: 11400000, guid: 5ec64ddbd50220a449af48a61b8282af, type: 2}
+  - {fileID: 11400000, guid: f5c7d255e19b7dc48a533bdd99e227cb, type: 2}
+  - {fileID: 11400000, guid: 6cbe1487d18cfc944bff2ef17654bdac, type: 2}
 --- !u!4 &1055019690
 Transform:
   m_ObjectHideFlags: 0

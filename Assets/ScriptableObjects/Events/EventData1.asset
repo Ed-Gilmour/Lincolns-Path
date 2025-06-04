@@ -26,19 +26,20 @@ MonoBehaviour:
     our recent resupply attempt.
   decision1Description: Call for 75,000 state militia to serve in volunteer regiments.
   decision1StatsChange:
-    military: 15
+    military: 10
     money: 0
     north: 10
     south: -10
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Appeal directly to the southern people.
   decision2StatsChange:
-    military: -10
+    military: -15
     money: 0
     north: -15
-    south: 10
+    south: 15
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0

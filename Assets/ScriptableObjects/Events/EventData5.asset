@@ -28,18 +28,19 @@ MonoBehaviour:
     the commander of the army of the Potomac with General George McClellan.
   decision1StatsChange:
     military: -10
-    money: 0
-    north: 10
+    money: -5
+    north: -5
     south: -10
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Increase peace efforts.
   decision2StatsChange:
     military: -20
     money: 0
-    north: -20
+    north: -25
     south: 10
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0

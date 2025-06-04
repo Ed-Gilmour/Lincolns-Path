@@ -27,7 +27,7 @@ MonoBehaviour:
     which has strained our military power.
   decision1Description: Condemn their interference.
   decision1StatsChange:
-    military: -25
+    military: -30
     money: 0
     north: 0
     south: -10
@@ -35,8 +35,8 @@ MonoBehaviour:
   decision2Description: Reinforce regiments to counteract the support.
   decision2StatsChange:
     military: 0
-    money: -25
-    north: 0
+    money: -15
+    north: 10
     south: -5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 2

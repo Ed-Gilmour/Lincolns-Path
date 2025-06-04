@@ -30,7 +30,7 @@ MonoBehaviour:
   decision1StatsChange:
     military: 10
     money: 0
-    north: -10
+    north: -5
     south: 0
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Accuse Simon Cameron of corruption and nominate Edwin Stanton
@@ -38,10 +38,11 @@ MonoBehaviour:
   decision2StatsChange:
     military: 10
     money: 0
-    north: 10
+    north: 5
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0

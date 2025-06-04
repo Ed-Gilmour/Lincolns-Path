@@ -10,35 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
-  m_Name: EventData2
+  m_Name: EventData14
   m_EditorClassIdentifier: 
   eventType: 0
-  title: Secretary of State William Seward
-  personSprite: {fileID: 21300000, guid: c927ae922d0912748b55b978ca134ca7, type: 3}
+  title: Secretary of War Edwin Stanton
+  personSprite: {fileID: 21300000, guid: a7c93570a8c1f7b4890bae7b5bc0af0a, type: 3}
   showSound:
-    clip: {fileID: 8300000, guid: a9918045551c9954db5a231dcfe1ec65, type: 3}
+    clip: {fileID: 8300000, guid: a9df0d14c54091046930015ad4924a05, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
     pitchVariation: 0.2
-  date: April 19, 1861
-  dateShort: 4/19/61
-  eventDescription: Sir, it would be smart to proclaim a blockade on the ports of
-    seceded states due to the recent events at Fort Sumter.
-  decision1Description: Refuse to proclaim a blockade.
+  date: May 12, 1862
+  dateShort: 5/12/62
+  eventDescription: "Mr. President, we\u2019ve captured Norfolk, Virginia from the
+    Confederates without resistance and as well as that we\u2019ve destroyed the
+    CSS Virginia."
+  decision1Description: Celebrate the victory and congratulate Union officers.
   decision1StatsChange:
-    military: 0
-    money: 0
-    north: -10
-    south: 15
-  decision1FollowingEvent: {fileID: 0}
-  decision2Description: Proclaim a blockade on the ports of seceded states.
-  decision2StatsChange:
-    military: 10
-    money: -5
+    military: 20
+    money: 10
     north: 10
-    south: -10
+    south: -15
+  decision1FollowingEvent: {fileID: 0}
+  decision2Description: Limit celebrations and continue working.
+  decision2StatsChange:
+    military: 20
+    money: 15
+    north: -5
+    south: -15
   decision2FollowingEvent: {fileID: 0}
-  lincolnEventType: 1
+  lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0

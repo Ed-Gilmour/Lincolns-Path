@@ -35,17 +35,18 @@ MonoBehaviour:
   decision1StatsChange:
     military: 10
     money: -10
-    north: 15
-    south: -10
+    north: 10
+    south: -5
   decision1FollowingEvent: {fileID: 11400000, guid: 074586a6235e5ef4683ecacdf01690a5, type: 2}
   decision2Description: Surrender the Fort to the Confederates.
   decision2StatsChange:
-    military: -15
+    military: -10
     money: 0
-    north: -10
+    north: -15
     south: 15
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 2
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0

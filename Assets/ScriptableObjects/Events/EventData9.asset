@@ -29,14 +29,14 @@ MonoBehaviour:
   decision1StatsChange:
     military: 0
     money: 0
-    north: 10
+    north: 5
     south: -20
   decision1FollowingEvent: {fileID: 11400000, guid: 805ec4b94443a514c84a4ba28b731a08, type: 2}
   decision2Description: Refuse to issue an apology but return the envoys.
   decision2StatsChange:
     military: 0
     money: 0
-    north: -10
+    north: -5
     south: 15
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
