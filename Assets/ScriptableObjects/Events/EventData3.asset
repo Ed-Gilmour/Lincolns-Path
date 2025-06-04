@@ -42,3 +42,4 @@ MonoBehaviour:
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0

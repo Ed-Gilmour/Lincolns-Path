@@ -27,29 +27,57 @@ public class TimelineManager : MonoBehaviour
     public void DisplayTimeline(EventData[] events, List<bool> decisions)
     {
         UpdateTimelineDisplay(events[0], decisions[0], true, false);
+        List<(EventData, int)> futureEvents = new();
         for (int i = 0; i < decisions.Count; i++)
         {
             EventData currentEvent = i == decisions.Count - 1 ? EventManager.Instance.GetLossEvent() : events[i];
+            EventData futureEvent = GetCurrentFutureEventData(futureEvents, i);
+            if (futureEvent != null)
+            {
+                currentEvent = futureEvent;
+            }
             CreateEventToggle(currentEvent, decisions[i], false, i == 0);
             while (i != decisions.Count - 2 && (currentEvent.decision1FollowingEvent != null || currentEvent.decision2FollowingEvent != null))
             {
-                if (currentEvent.decision1FollowingEvent != null && currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither)
+                if (currentEvent.decision1FollowingEvent != null)
                 {
-                    CreateEventToggle(currentEvent.decision1FollowingEvent, decisions[i + 1], !decisions[i]);
-                    if (decisions[i])
+                    if (currentEvent.eventDelayCount > 0 && decisions[i])
                     {
-                        decisions.RemoveAt(i + 1);
+                        futureEvents.Add((currentEvent.decision1FollowingEvent, i + currentEvent.eventDelayCount));
+                        break;
                     }
-                    currentEvent = currentEvent.decision1FollowingEvent;
+                    else
+                    {
+                        if (currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither || (currentEvent.decision1FollowingEvent.lincolnEventType == LincolnEventType.Neither && decisions[i]))
+                        {
+                            CreateEventToggle(currentEvent.decision1FollowingEvent, decisions[i + 1], !decisions[i]);
+                        }
+                        if (decisions[i])
+                        {
+                            decisions.RemoveAt(i + 1);
+                        }
+                        currentEvent = currentEvent.decision1FollowingEvent;
+                    }
                 }
-                else if (currentEvent.decision2FollowingEvent != null && currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither)
+                else if (currentEvent.decision2FollowingEvent != null)
                 {
-                    CreateEventToggle(currentEvent.decision2FollowingEvent, decisions[i + 1], decisions[i]);
-                    if (!decisions[i])
+                    if (currentEvent.eventDelayCount > 0 && !decisions[i])
                     {
-                        decisions.RemoveAt(i + 1);
+                        futureEvents.Add((currentEvent.decision2FollowingEvent, i + currentEvent.eventDelayCount));
+                        break;
                     }
-                    currentEvent = currentEvent.decision2FollowingEvent;
+                    else
+                    {
+                        if (currentEvent.decision2FollowingEvent.lincolnEventType != LincolnEventType.Neither || (currentEvent.decision2FollowingEvent.lincolnEventType == LincolnEventType.Neither && !decisions[i]))
+                        {
+                            CreateEventToggle(currentEvent.decision2FollowingEvent, decisions[i + 1], decisions[i]);
+                        }
+                        if (!decisions[i])
+                        {
+                            decisions.RemoveAt(i + 1);
+                        }
+                        currentEvent = currentEvent.decision2FollowingEvent;
+                    }
                 }
                 else
                 {
@@ -58,6 +86,21 @@ public class TimelineManager : MonoBehaviour
             }
         }
         timelineAnimator.gameObject.SetActive(true);
+    }
+
+    EventData GetCurrentFutureEventData(List<(EventData, int)> futureEvents, int currentEventIndex)
+    {
+        EventData eventData = null;
+        for (int i = 0; i < futureEvents.Count; i++)
+        {
+            if (futureEvents[i].Item2 == currentEventIndex)
+            {
+                eventData = futureEvents[i].Item1;
+                futureEvents.RemoveAt(i);
+                break;
+            }
+        }
+        return eventData;
     }
 
     private void CreateEventToggle(EventData eventData, bool isDecision1, bool shouldHave, bool isFirst = false)

@@ -1,4 +1,4 @@
-Handle future events in the timeline
+Fix future event always happening in timeline
 Implement all events
 Game Intro/Tutorial
 Choice to go back to place on loss
