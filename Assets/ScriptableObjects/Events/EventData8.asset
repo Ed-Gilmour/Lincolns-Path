@@ -40,7 +40,7 @@ MonoBehaviour:
     north: -20
     south: 0
   decision2FollowingEvent: {fileID: 0}
-  lincolnEventType: 0
+  lincolnEventType: 2
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0

@@ -46,6 +46,8 @@ public class EventManager : MonoBehaviour
     private EventData lossEvent;
     private int currentEventIndex;
     private List<bool> allDecisions = new();
+    private List<(EventData, int)> futureEvents = new();
+    private bool isFutureEvent;
     private const float writtenLineSpacing = -30f;
     private const float typedLineSpacing = -5f;
 
@@ -210,18 +212,55 @@ public class EventManager : MonoBehaviour
             {
                 if (lossEvent == null)
                 {
+                    void UpdateEvent()
+                    {
+                        if (!isFutureEvent)
+                        {
+                            currentEventIndex++;
+                        }
+                        else
+                        {
+                            isFutureEvent = false;
+                        }
+                        EventData futureEvent = GetCurrentFutureEventData();
+                        if (futureEvent != null)
+                        {
+                            isFutureEvent = true;
+                            currentEvent = futureEvent;
+                        }
+                        else
+                        {
+                            currentEvent = events[currentEventIndex];
+                        }
+                    }
+
                     if (isDecision1 && currentEvent.decision1FollowingEvent != null)
                     {
-                        currentEvent = currentEvent.decision1FollowingEvent;
+                        if (currentEvent.eventDelayCount > 0)
+                        {
+                            futureEvents.Add((currentEvent.decision1FollowingEvent, currentEventIndex + currentEvent.eventDelayCount));
+                            UpdateEvent();
+                        }
+                        else
+                        {
+                            currentEvent = currentEvent.decision1FollowingEvent;
+                        }
                     }
                     else if (!isDecision1 && currentEvent.decision2FollowingEvent != null)
                     {
-                        currentEvent = currentEvent.decision2FollowingEvent;
+                        if (currentEvent.eventDelayCount > 0)
+                        {
+                            futureEvents.Add((currentEvent.decision2FollowingEvent, currentEventIndex + currentEvent.eventDelayCount));
+                            UpdateEvent();
+                        }
+                        else
+                        {
+                            currentEvent = currentEvent.decision2FollowingEvent;
+                        }
                     }
                     else
                     {
-                        currentEventIndex++;
-                        currentEvent = events[currentEventIndex];
+                        UpdateEvent();
                     }
                 }
                 else
@@ -236,6 +275,21 @@ public class EventManager : MonoBehaviour
         {
             StartCoroutine(LossRoutine());
         }
+    }
+
+    EventData GetCurrentFutureEventData()
+    {
+        EventData eventData = null;
+        for (int i = 0; i < futureEvents.Count; i++)
+        {
+            if (futureEvents[i].Item2 == currentEventIndex)
+            {
+                eventData = futureEvents[i].Item1;
+                futureEvents.RemoveAt(i);
+                break;
+            }
+        }
+        return eventData;
     }
 
     private IEnumerator LossRoutine()

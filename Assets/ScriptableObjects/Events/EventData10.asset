@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
-  m_Name: EventData9
+  m_Name: EventData10
   m_EditorClassIdentifier: 
   eventType: 0
   title: Secretary of State William Seward
@@ -20,27 +20,28 @@ MonoBehaviour:
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
     pitchVariation: 0.2
-  date: December 25, 1861
-  dateShort: 12/25/61
-  eventDescription: Sir, Charles Wilkes, a U.S. Navy Officer, captured two Confederate
-    envoys aboard the British mail ship, <i>the Trent</i>. Britain has demanded an
-    apology and a return of the envoys to avert war.
-  decision1Description: Ignore the British demands.
+  date: January 13, 1862
+  dateShort: 1/13/62
+  eventDescription: Sir, our Secretary of War, Simon Cameron, has been handling his
+    position very poorly and has been accused of corruption. I recommend you nominate
+    Edwin Stanton for the Secretary of War.
+  decision1Description: Defend Simon Cameron from accusations and nominate Edwin
+    Stanton for Secretary of War.
   decision1StatsChange:
-    military: 0
-    money: 0
-    north: 10
-    south: -20
-  decision1FollowingEvent: {fileID: 11400000, guid: 805ec4b94443a514c84a4ba28b731a08, type: 2}
-  decision2Description: Refuse to issue an apology but return the envoys.
-  decision2StatsChange:
-    military: 0
+    military: 10
     money: 0
     north: -10
-    south: 15
+    south: 0
+  decision1FollowingEvent: {fileID: 0}
+  decision2Description: Accuse Simon Cameron of corruption and nominate Edwin Stanton
+    for Secretary of War.
+  decision2StatsChange:
+    military: 10
+    money: 0
+    north: 10
+    south: 0
   decision2FollowingEvent: {fileID: 0}
-  lincolnEventType: 1
+  lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
-  eventDelayCount: 2
