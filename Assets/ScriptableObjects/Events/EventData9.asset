@@ -23,8 +23,8 @@ MonoBehaviour:
   date: December 25, 1861
   dateShort: 12/25/61
   eventDescription: Sir, Charles Wilkes, a U.S. Navy Officer, captured two Confederate
-    envoys aboard the British mail ship, the Trent. Britain has demanded an apology
-    and a return of the envoys to avert war.
+    envoys aboard the British mail ship, <i>the Trent</i>. Britain has demanded an
+    apology and a return of the envoys to avert war.
   decision1Description: Ignore the British demands.
   decision1StatsChange:
     military: 0

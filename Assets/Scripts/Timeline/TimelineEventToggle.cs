@@ -11,11 +11,10 @@ public class TimelineEventToggle : MonoBehaviour
 
     public void SetTimelineToggle(bool lincoln, bool shouldHave, bool notReal, string date)
     {
-        lincolnIcon.SetActive(lincoln);
+        lincolnIcon.SetActive(lincoln && !shouldHave);
+        differentIcon.SetActive(!lincoln && !notReal && !shouldHave);
         shouldHaveIcon.SetActive(shouldHave);
         notRealIcon.SetActive(notReal);
-
-        differentIcon.SetActive(!lincoln && !notReal && !shouldHave);
 
         dateText.text = date;
     }

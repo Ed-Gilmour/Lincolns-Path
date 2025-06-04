@@ -73,7 +73,7 @@ public class IntroManager : MonoBehaviour
 
     public IEnumerator IntroTextRoutine(IntroTextData textData)
     {
-        bool notFromIntro = currentIntroIndex >= introData.Length;
+        bool notFromIntro = currentIntroIndex >= introData.Length || PauseMenu.Instance.restarted;
 
         introText.text = textData.introText;
 

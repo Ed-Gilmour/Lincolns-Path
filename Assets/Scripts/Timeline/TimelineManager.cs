@@ -31,18 +31,24 @@ public class TimelineManager : MonoBehaviour
         {
             EventData currentEvent = i == decisions.Count - 1 ? EventManager.Instance.GetLossEvent() : events[i];
             CreateEventToggle(currentEvent, decisions[i], false, i == 0);
-            while (currentEvent.decision1FollowingEvent != null || currentEvent.decision2FollowingEvent != null)
+            while (i != decisions.Count - 2 && (currentEvent.decision1FollowingEvent != null || currentEvent.decision2FollowingEvent != null))
             {
                 if (currentEvent.decision1FollowingEvent != null && currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither)
                 {
                     CreateEventToggle(currentEvent.decision1FollowingEvent, decisions[i + 1], !decisions[i]);
-                    decisions.RemoveAt(i + 1);
+                    if (decisions[i])
+                    {
+                        decisions.RemoveAt(i + 1);
+                    }
                     currentEvent = currentEvent.decision1FollowingEvent;
                 }
                 else if (currentEvent.decision2FollowingEvent != null && currentEvent.decision1FollowingEvent.lincolnEventType != LincolnEventType.Neither)
                 {
                     CreateEventToggle(currentEvent.decision2FollowingEvent, decisions[i + 1], decisions[i]);
-                    decisions.RemoveAt(i + 1);
+                    if (!decisions[i])
+                    {
+                        decisions.RemoveAt(i + 1);
+                    }
                     currentEvent = currentEvent.decision2FollowingEvent;
                 }
                 else
