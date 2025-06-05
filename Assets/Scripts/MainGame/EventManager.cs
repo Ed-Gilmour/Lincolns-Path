@@ -84,23 +84,37 @@ public class EventManager : MonoBehaviour
     private EventData GetEventDataForLoss(StatManager.StatSet statSet)
     {
         EventData lossEventData = null;
+        bool hasLost =
+        statSet.military <= 0f ||
+        statSet.military >= StatManager.MaxStat ||
+        statSet.money <= 0 ||
+        statSet.money >= StatManager.MaxStat ||
+        statSet.north <= 0 ||
+        statSet.north >= StatManager.MaxStat ||
+        statSet.south <= 0 ||
+        statSet.south >= StatManager.MaxStat;
 
-        if (statSet.military <= 0f)
-            lossEventData = militaryLowEvent;
-        else if (statSet.military >= StatManager.MaxStat)
-            lossEventData = militaryHighEvent;
-        else if (statSet.money <= 0)
-            lossEventData = moneyLowEvent;
-        else if (statSet.money >= StatManager.MaxStat)
-            lossEventData = moneyHighEvent;
-        else if (statSet.north <= 0)
-            lossEventData = northLowEvent;
-        else if (statSet.north >= StatManager.MaxStat)
-            lossEventData = northHighEvent;
-        else if (statSet.south <= 0)
-            lossEventData = southLowEvent;
-        else if (statSet.south >= StatManager.MaxStat)
-            lossEventData = southHighEvent;
+        while (hasLost && lossEventData == null)
+        {
+            int rng = Random.Range(0, 8);
+
+            if (statSet.military <= 0f && rng == 0)
+                lossEventData = militaryLowEvent;
+            else if (statSet.military >= StatManager.MaxStat && rng == 1)
+                lossEventData = militaryHighEvent;
+            else if (statSet.money <= 0 && rng == 2)
+                lossEventData = moneyLowEvent;
+            else if (statSet.money >= StatManager.MaxStat && rng == 3)
+                lossEventData = moneyHighEvent;
+            else if (statSet.north <= 0 && rng == 4)
+                lossEventData = northLowEvent;
+            else if (statSet.north >= StatManager.MaxStat && rng == 5)
+                lossEventData = northHighEvent;
+            else if (statSet.south <= 0 && rng == 6)
+                lossEventData = southLowEvent;
+            else if (statSet.south >= StatManager.MaxStat && rng == 7)
+                lossEventData = southHighEvent;
+        }
 
         return lossEventData;
     }
