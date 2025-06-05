@@ -6,6 +6,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
+    [SerializeField] private GameObject benny;
     [SerializeField] private TMP_FontAsset writtenFont;
     [SerializeField] private TMP_FontAsset typedFont;
     [SerializeField] private GameObject blackBackground;
@@ -342,6 +343,11 @@ public class EventManager : MonoBehaviour
         if (closingEvent.date.Length > 0)
         {
             dateAnimator.SetTrigger("Hide");
+        }
+
+        if (closingEvent.decision2Benny && !isDecision1)
+        {
+            benny.SetActive(true);
         }
 
         Animator eventAnimator = isLetter ? letterAnimator : (isDocument ? documentAnimator : personAnimator);

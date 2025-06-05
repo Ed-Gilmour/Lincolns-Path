@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
-  m_Name: EventData18
+  m_Name: EventData48
   m_EditorClassIdentifier: 
   eventType: 0
   title: Secretary of State William Seward
@@ -20,28 +20,27 @@ MonoBehaviour:
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
     pitchVariation: 0.2
-  date: July 2, 1862
-  dateShort: 7/2/62
-  eventDescription: Sir, there is an act I suggest you approve. The Morrill Land
-    Act will improve education in the United States by providing land grants to colleges
-    and universities.
-  decision1Description: Veto the Morrill Land Act.
+  date: February 1, 1865
+  dateShort: 2/1/65
+  eventDescription: Sir, Congress has passed the 13th amendment, which will abolish
+    slavery, and I suggest you suggest you approve it despite it not being necessary
+    to sign it.
+  decision1Description: Sign the Amendment.
   decision1StatsChange:
     military: 0
     money: 0
-    north: -20
-    south: 20
+    north: 15
+    south: -10
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: Approve the Morrill Land Act.
+  decision2Description: Refuse to sign it.
   decision2StatsChange:
     military: 0
-    money: 15
-    north: 10
-    south: -10
+    money: 0
+    north: -10
+    south: 15
   decision2FollowingEvent: {fileID: 0}
-  lincolnEventType: 1
+  lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
-  decision2Benny: 1

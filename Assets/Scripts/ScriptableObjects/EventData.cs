@@ -21,6 +21,7 @@ public class EventData : ScriptableObject
     public float screenTextDelay;
     public float continueTextTime;
     public int eventDelayCount;
+    public bool decision2Benny;
 }
 
 public enum LincolnEventType { Decision1, Decision2, Neither, LossEvent }
