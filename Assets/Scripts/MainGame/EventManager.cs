@@ -25,6 +25,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI personTitleText;
     [SerializeField] private TextMeshProUGUI personText;
     [SerializeField] private AudioManager.AudioClipData letterClickSound;
+    [SerializeField] private Animator documentAnimator;
+    [SerializeField] private Animator documentMoveAnimator;
     [SerializeField] private Animator letterAnimator;
     [SerializeField] private Animator letterMoveAnimator;
     [SerializeField] private TextMeshProUGUI letterText;
@@ -42,6 +44,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private SelectableAnimator[] decisionAnimators;
     [SerializeField] private GameObject[] objectsToActivateOnStart;
     [SerializeField] private EventData[] events;
+    [SerializeField] private int startIndex;
     private EventData currentEvent;
     private EventData lossEvent;
     private int currentEventIndex;
@@ -54,6 +57,7 @@ public class EventManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        currentEventIndex = startIndex;
         StatManager.Instance.onStatsChanged += OnStatsChanged;
         UpdateAccessibilityFont(PauseMenu.Instance.GetIsAccessibilityFont());
         PauseMenu.Instance.OnAccessibilityFontChanged += UpdateAccessibilityFont;
@@ -158,23 +162,27 @@ public class EventManager : MonoBehaviour
 
         StatManager.Instance.SetCurrentEvent(currentEvent);
         bool isLetter = currentEvent.eventType == GameEventType.Letter;
-        Animator eventAnimator = isLetter ? letterAnimator : personAnimator;
+        bool isDocument = currentEvent.eventType == GameEventType.Document;
+        Animator eventAnimator = isLetter ? letterAnimator : (isDocument ? documentAnimator : personAnimator);
 
         foreach (SelectableAnimator selectableAnimator in decisionAnimators)
         {
-            selectableAnimator.SetTargetAnimator(isLetter ? letterMoveAnimator : personMoveAnimator);
+            selectableAnimator.SetTargetAnimator(isLetter ? letterMoveAnimator : (isDocument ? documentMoveAnimator : personMoveAnimator));
         }
         foreach (ButtonSounds buttonSounds in decisionSounds)
         {
-            buttonSounds.SetClickSound(isLetter ? letterClickSound : personClickSound);
+            buttonSounds.SetClickSound(isLetter || isDocument ? letterClickSound : personClickSound);
         }
 
         eventAnimator.gameObject.SetActive(true);
-        (isLetter ? letterText : personText).text = currentEvent.eventDescription;
+        if (currentEvent.eventDescription.Length > 0)
+        {
+            (isLetter ? letterText : personText).text = currentEvent.eventDescription;
+        }
         decision1Text.text = currentEvent.decision1Description;
         decision2Text.text = currentEvent.decision2Description;
 
-        if (!isLetter)
+        if (!isLetter && !isDocument)
         {
             personSpriteRenderer.sprite = currentEvent.personSprite;
             personTitleText.text = currentEvent.title;
@@ -187,7 +195,7 @@ public class EventManager : MonoBehaviour
             return stateInfo.IsName("Open") && stateInfo.normalizedTime >= 1f;
         });
 
-        if (!isLetter)
+        if (!isLetter && !isDocument)
         {
             currentEvent.showSound.Play();
             personCanvasAnimator.SetTrigger("Show");
@@ -308,8 +316,9 @@ public class EventManager : MonoBehaviour
     private IEnumerator CloseEventRoutine(bool isDecision1, EventData closingEvent)
     {
         bool isLetter = closingEvent.eventType == GameEventType.Letter;
+        bool isDocument = closingEvent.eventType == GameEventType.Document;
 
-        if (!isLetter)
+        if (!isLetter && !isDocument)
         {
             personCanvasAnimator.SetTrigger("Hide");
         }
@@ -321,7 +330,7 @@ public class EventManager : MonoBehaviour
             dateAnimator.SetTrigger("Hide");
         }
 
-        Animator eventAnimator = isLetter ? letterAnimator : personAnimator;
+        Animator eventAnimator = isLetter ? letterAnimator : (isDocument ? documentAnimator : personAnimator);
 
         eventAnimator.SetTrigger(isDecision1 ? "Left" : "Right");
         AnimatorStateInfo stateInfo = eventAnimator.GetCurrentAnimatorStateInfo(0);
