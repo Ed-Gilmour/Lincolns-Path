@@ -53,7 +53,7 @@ public class EventManager : MonoBehaviour
     private List<(EventData, int)> futureEvents = new();
     private bool isFutureEvent;
     private const float writtenLineSpacing = -30f;
-    private const float typedLineSpacing = -5f;
+    private const float typedLineSpacing = -20f;
 
     private void Awake()
     {

@@ -23,8 +23,8 @@ MonoBehaviour:
   date: May 12, 1862
   dateShort: 5/12/62
   eventDescription: "Mr. President, we\u2019ve captured Norfolk, Virginia from the
-    Confederates without resistance and as well as that we\u2019ve destroyed the
-    CSS Virginia."
+    Confederates without resistance and as well as that we\u2019ve destroyed <i>the
+    CSS Virginia</i>."
   decision1Description: Celebrate the victory and congratulate Union officers.
   decision1StatsChange:
     military: 20
@@ -44,3 +44,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

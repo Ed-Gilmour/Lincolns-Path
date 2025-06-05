@@ -19218,18 +19218,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mr. President,
-
-
-    The provisions at Fort Sumter will be exhausted in
-    4-6 weeks and we need a large land and naval force of 20,000 men to reinforce
-    the fort.
-
-
-    From Major Robert Anderson.'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ddd1a7bac379b004295db03b16a8c303, type: 2}
-  m_sharedMaterial: {fileID: -162083704886469326, guid: ddd1a7bac379b004295db03b16a8c303, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b5ab176196363534b9c79560e6326442, type: 2}
+  m_sharedMaterial: {fileID: -1170133351654283390, guid: b5ab176196363534b9c79560e6326442, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19253,8 +19245,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.35
-  m_fontSizeBase: 0.35
+  m_fontSize: 0.34
+  m_fontSizeBase: 0.34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19591,7 +19583,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 3}
+  m_SizeDelta: {x: 5, y: 3.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045351538
 MonoBehaviour:
