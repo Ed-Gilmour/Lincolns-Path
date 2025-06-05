@@ -31,8 +31,8 @@ MonoBehaviour:
     north: 10
     south: 0
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: "Publicly accuse General Meade for allowing Lee\u2019s forces
-    to escape."
+  decision2Description: Publicly accuse General Meade for allowing Lee's forces to
+    escape.
   decision2StatsChange:
     military: -15
     money: 0

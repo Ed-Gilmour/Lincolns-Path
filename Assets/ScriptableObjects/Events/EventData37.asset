@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
-  m_Name: EventData29
+  m_Name: EventData37
   m_EditorClassIdentifier: 
   eventType: 0
-  title: Secretary of the Treasury Salmon Chase
-  personSprite: {fileID: 21300000, guid: 6c6c7ebc7467b0c48896c1cb66f1a7b6, type: 3}
+  title: Secretary of War Edwin Stanton
+  personSprite: {fileID: 21300000, guid: a7c93570a8c1f7b4890bae7b5bc0af0a, type: 3}
   showSound:
-    clip: {fileID: 8300000, guid: db3401aa63681e34e8af2fdbfb8036ed, type: 3}
+    clip: {fileID: 8300000, guid: a9df0d14c54091046930015ad4924a05, type: 3}
     mixerGroup: {fileID: 24300002, guid: 03a63b7254eb8a04e8714f361800d787, type: 2}
     volume: 1
     pitchVariation: 0.2
-  date: February 25, 1863
-  dateShort: 2/25/63
-  eventDescription: Mr. Lincoln, I highly suggest that you approve the National Currency
-    Act. This will establish the Office of the Comptroller of the Currency.
-  decision1Description: Approve the National Currency Act.
+  date: March 9, 1864
+  dateShort: 3/9/64
+  eventDescription: Mr. President I suggest promoting General Grant to be the new
+    General-in-chief of your forces replacing General Halleck.
+  decision1Description: Promote General Grant.
   decision1StatsChange:
-    military: 0
-    money: 20
+    military: 10
+    money: 0
     north: 10
-    south: -15
+    south: 0
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: Veto the National Currency Act.
+  decision2Description: Leave General Halleck as General-in-chief.
   decision2StatsChange:
     military: 0
     money: 0
-    north: -15
-    south: 25
+    north: 5
+    south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 0

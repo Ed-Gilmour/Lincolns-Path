@@ -22,10 +22,10 @@ MonoBehaviour:
     pitchVariation: 0.2
   date: December 12, 1862
   dateShort: 12/12/62
-  eventDescription: Mr. President, I regret to inform you that the Union has suffered
-    a disastrous defeat at Fredericksburg, Virginia. The Secretary of the Treasury,
-    Salmon Chase has pressed you to reorganize your cabinet, and he, as well as the
-    Secretary of State William Seward have offered to resign.
+  eventDescription: "Mr. President, I regret to inform you that the Union has suffered
+    a disastrous defeat at Fredericksburg, Virginia. Secretary of the Treasury Salmon
+    Chase has pressed you to reorganize your cabinet, and he, as well as the Secretary
+    of State William Seward have offered to resign.\r"
   decision1Description: Refuse to reorganize your cabinet.
   decision1StatsChange:
     military: -20

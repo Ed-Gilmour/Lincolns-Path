@@ -10,43 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
-  m_Name: EventData27
+  m_Name: EventData38
   m_EditorClassIdentifier: 
   eventType: 1
-  title: Letter from Secretary of the Interior Caleb Smith
+  title: Letter from Secretary of the Treasury Salmon Chase
   personSprite: {fileID: 0}
   showSound:
     clip: {fileID: 0}
     mixerGroup: {fileID: 0}
     volume: 0
     pitchVariation: 0
-  date: January 8, 1863
-  dateShort: 1/8/63
-  eventDescription: 'Mr. President,
+  date: June 30, 1864
+  dateShort: 6/30/64
+  eventDescription: 'Mr. Lincoln,
 
 
-    Due to my declining health and desire to
-    serve as a U.S. District Court Judge in Indiana I resign as the United States
-    Secretary of the Interior.
+    Due to my differing opinions from you on
+    the Civil War and my political aspirations, I give you my resignation as Secretary
+    of the Treasury.
 
 
-    From Secretary of Interior Caleb Smith'
-  decision1Description: Appoint John Usher as the Secretary of the Interior and publicly
-    accuse Caleb Smith as being unloyal and a poor secretary.
+    From Secretary of the Treasury Salmon Chase'
+  decision1Description: Accept Secretary of the Treasury Salmon Chase's resignation
+    and replace him with William Fessenden.
   decision1StatsChange:
     military: 0
-    money: 0
-    north: -5
-    south: -5
+    money: 5
+    north: 10
+    south: 0
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: Appoint John Usher as the Secretary of the Interior.
+  decision2Description: Accuse Secretary of the Treasury Salmon Chase for disloyalty
+    and replace him with William Fessenden.
   decision2StatsChange:
     military: 0
-    money: 0
-    north: 5
+    money: 5
+    north: -10
     south: 0
   decision2FollowingEvent: {fileID: 0}
-  lincolnEventType: 1
+  lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
