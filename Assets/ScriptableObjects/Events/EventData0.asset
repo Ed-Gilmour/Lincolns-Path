@@ -46,7 +46,8 @@ MonoBehaviour:
     south: 15
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
-  additionalDelay: 2
+  additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

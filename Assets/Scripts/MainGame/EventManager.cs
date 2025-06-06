@@ -6,6 +6,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
+    [SerializeField] private Animator tutorialAnimator;
     [SerializeField] private GameObject benny;
     [SerializeField] private TMP_FontAsset writtenFont;
     [SerializeField] private TMP_FontAsset typedFont;
@@ -141,11 +142,40 @@ public class EventManager : MonoBehaviour
 
     public void StartGame()
     {
+        StartCoroutine(StartGameRoutine());
+    }
+
+    IEnumerator StartGameRoutine()
+    {
         foreach (GameObject obj in objectsToActivateOnStart)
         {
             obj.SetActive(true);
         }
+        if (PauseMenu.Instance.restarted)
+        {
+            yield return new WaitForSeconds(1f);
+            currentEvent = events[currentEventIndex];
+            StartCoroutine(PlayEventRoutine());
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+            tutorialAnimator.gameObject.SetActive(true);
+        }
+    }
+
+    public void HideTutorialCanvas()
+    {
+        StartCoroutine(HideTutorialCanvasRoutine());
+    }
+
+    IEnumerator HideTutorialCanvasRoutine()
+    {
+        tutorialAnimator.SetTrigger("Hide");
+        yield return new WaitForSeconds(1f);
+        tutorialAnimator.gameObject.SetActive(false);
         currentEvent = events[currentEventIndex];
+        yield return new WaitForSeconds(1f);
         StartCoroutine(PlayEventRoutine());
     }
 
