@@ -12,7 +12,11 @@ public class IntroManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI introText;
     [SerializeField] private AudioManager.AudioClipData swipeOutSound;
     [SerializeField] private IntroTextData[] introData;
+    [HideInInspector] public IntroTextData[] endData;
+    [HideInInspector] public IntroTextData[] yearBreakData;
+    private int endIndex;
     private int currentIntroIndex;
+    [HideInInspector] public int yearBreakIndex;
     private bool canSkip;
     private bool continueTextActive;
     public event Action<bool> OnFinishedSwipeOut;
@@ -21,7 +25,7 @@ public class IntroManager : MonoBehaviour
     public class IntroTextData
     {
         public AudioManager.AudioClipData textSound;
-        public string introText;
+        [TextArea] public string introText;
         public float continueTextTime;
 
         public IntroTextData(AudioManager.AudioClipData textSound, string introText, float continueTextTime)
@@ -81,6 +85,14 @@ public class IntroManager : MonoBehaviour
         {
             currentIntroIndex++;
         }
+        else if (endData != null && endData.Length > 0)
+        {
+            endIndex++;
+        }
+        else if (yearBreakData != null && yearBreakData.Length > 0)
+        {
+            yearBreakIndex++;
+        }
 
         maskSwipeEffect.SwipeEffectIn();
         textData.textSound?.Play();
@@ -94,14 +106,25 @@ public class IntroManager : MonoBehaviour
 
         maskSwipeEffect.SwipeEffectOut();
 
-        if (!notFromIntro)
+        if (!notFromIntro || (yearBreakData != null && yearBreakData.Length > 0))
         {
             swipeOutSound.Play();
         }
 
         yield return new WaitUntil(() => !maskSwipeEffect.swipingOut);
 
-        OnFinishedSwipeOut?.Invoke(notFromIntro);
+        if (endData != null && endData.Length > 0 && endIndex < endData.Length)
+        {
+            StartCoroutine(IntroTextRoutine(endData[endIndex]));
+        }
+        else if (yearBreakData != null && yearBreakData.Length > 0 && yearBreakIndex < yearBreakData.Length)
+        {
+            StartCoroutine(IntroTextRoutine(yearBreakData[yearBreakIndex]));
+        }
+        else
+        {
+            OnFinishedSwipeOut?.Invoke(notFromIntro);
+        }
 
         if (!notFromIntro)
         {

@@ -36,11 +36,12 @@ MonoBehaviour:
   decision2StatsChange:
     military: 0
     money: 0
-    north: -5
-    south: 15
+    north: -15
+    south: 25
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 2
+  decision2Benny: 0

@@ -35,7 +35,7 @@ MonoBehaviour:
   decision1StatsChange:
     military: 10
     money: 0
-    north: -10
+    north: -5
     south: 0
   decision1FollowingEvent: {fileID: 11400000, guid: b8097bf1e5d634f48bddef19805d7b22, type: 2}
   decision2Description: Replace General Winfield Scott as General-in-chief with General
@@ -43,10 +43,12 @@ MonoBehaviour:
   decision2StatsChange:
     military: -10
     money: 0
-    north: 10
-    south: 0
+    north: 5
+    south: 5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0
+  decision2Benny: 0

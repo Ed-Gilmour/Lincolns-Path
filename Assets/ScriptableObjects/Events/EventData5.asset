@@ -25,12 +25,12 @@ MonoBehaviour:
   eventDescription: Mr. President, I regret to inform you that we've lost the battle
     at Bull Run, the first full-scale battle of the war.
   decision1Description: Call for more volunteers and replace General Irvin McDowell
-    the commander of the army of the Potomac with General George McClellan.
+    the commander of the army of the Potomac with General McClellan.
   decision1StatsChange:
     military: -10
     money: -5
-    north: -5
-    south: -10
+    north: -10
+    south: -5
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Increase peace efforts.
   decision2StatsChange:
@@ -44,3 +44,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

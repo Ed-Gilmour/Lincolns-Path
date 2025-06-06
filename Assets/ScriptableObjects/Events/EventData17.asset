@@ -29,8 +29,8 @@ MonoBehaviour:
   decision1StatsChange:
     military: 0
     money: -20
-    north: 20
-    south: -20
+    north: 10
+    south: -10
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Veto the Pacific Railroad Act.
   decision2StatsChange:
@@ -44,3 +44,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

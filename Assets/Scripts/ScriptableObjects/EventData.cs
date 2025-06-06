@@ -21,6 +21,7 @@ public class EventData : ScriptableObject
     public float screenTextDelay;
     public float continueTextTime;
     public int eventDelayCount;
+    public bool endEvent;
     public bool decision2Benny;
 }
 

@@ -24,22 +24,23 @@ MonoBehaviour:
   dateShort: 5/15/62
   eventDescription: Sir, a bill to start the Department of Agriculture has been passed
     through congress.
-  decision1Description: Veto the bill.
+  decision1Description: Veto the bill to stop the Department of Agriculture.
   decision1StatsChange:
     military: 0
     money: 0
-    north: -20
-    south: 20
+    north: -15
+    south: 15
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Approve the bill and establish the Department of Agriculture.
   decision2StatsChange:
     military: 0
     money: -15
-    north: 10
-    south: -10
+    north: 5
+    south: -5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

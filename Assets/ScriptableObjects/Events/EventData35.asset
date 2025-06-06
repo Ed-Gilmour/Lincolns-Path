@@ -29,17 +29,18 @@ MonoBehaviour:
     military: -20
     money: -10
     north: -30
-    south: 0
+    south: -20
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Issue a public apology and pay for damages.
   decision2StatsChange:
     military: -10
     money: -30
     north: -10
-    south: 0
+    south: -10
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 2
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

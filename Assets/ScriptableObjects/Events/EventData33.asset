@@ -28,15 +28,14 @@ MonoBehaviour:
   decision1StatsChange:
     military: -10
     money: 0
-    north: 10
+    north: 5
     south: 0
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: Publicly accuse General Meade for allowing Lee's forces to
-    escape.
+  decision2Description: Accuse General Meade for allowing Lee's forces to escape.
   decision2StatsChange:
     military: -15
     money: 0
-    north: -10
+    north: -5
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
@@ -44,3 +43,5 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  endEvent: 0
+  decision2Benny: 0

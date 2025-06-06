@@ -9,6 +9,7 @@ public class TextFadeEffect : MonoBehaviour
     [SerializeField] private float pulseDepth;
     private bool isFading;
     private bool isPulsing;
+    private const float fadeSpeedIncreaseDiv = 2f;
 
     private void Update()
     {
@@ -35,7 +36,7 @@ public class TextFadeEffect : MonoBehaviour
         }
         else if (!isFading && effectText.alpha > 0f)
         {
-            UpdateTextAlpha(-fadeTime);
+            UpdateTextAlpha(-fadeTime / fadeSpeedIncreaseDiv);
         }
     }
 

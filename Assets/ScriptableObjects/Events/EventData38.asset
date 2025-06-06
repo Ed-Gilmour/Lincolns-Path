@@ -36,7 +36,7 @@ MonoBehaviour:
   decision1StatsChange:
     military: 0
     money: 5
-    north: 10
+    north: 5
     south: 0
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Accuse Secretary of the Treasury Salmon Chase for disloyalty
@@ -44,7 +44,7 @@ MonoBehaviour:
   decision2StatsChange:
     military: 0
     money: 5
-    north: -10
+    north: -5
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
@@ -52,3 +52,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

@@ -16,8 +16,9 @@ public class StatManager : MonoBehaviour
     [SerializeField] private GraphicFadeEffect moneySignalFadeEffect;
     [SerializeField] private GraphicFadeEffect northSignalFadeEffect;
     [SerializeField] private GraphicFadeEffect southSignalFadeEffect;
-    private StatSet stats = new();
+    [HideInInspector] public StatSet stats = new();
     private EventData currentEventData;
+    private bool currentReverse;
     private readonly Vector2 signalSmallSize = new(8f, 8f);
     private readonly Vector2 signalLargeSize = new(12f, 12f);
     private const int minChangeForLarge = 25;
@@ -51,13 +52,16 @@ public class StatManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SetCurrentEvent(EventData newEvent)
+    public void SetCurrentEvent(EventData newEvent, bool reverse)
     {
+        currentReverse = reverse;
         currentEventData = newEvent;
     }
 
     public void UpdateStats(bool isDecision1)
     {
+        if (currentReverse) isDecision1 = !isDecision1;
+
         StatSet statChange = isDecision1 ? currentEventData.decision1StatsChange : currentEventData.decision2StatsChange;
         stats += statChange;
         onStatsChanged?.Invoke(stats);
@@ -69,6 +73,8 @@ public class StatManager : MonoBehaviour
 
     public void SetStatSignals(bool isDecision1)
     {
+        if (currentReverse) isDecision1 = !isDecision1;
+
         StatSet statChange = isDecision1 ? currentEventData.decision1StatsChange : currentEventData.decision2StatsChange;
         SetSingleStatSignal(militarySignalRectTransform, militarySignalFadeEffect, statChange.military);
         SetSingleStatSignal(moneySignalRectTransform, moneySignalFadeEffect, statChange.money);

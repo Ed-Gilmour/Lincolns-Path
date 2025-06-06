@@ -28,18 +28,19 @@ MonoBehaviour:
   decision1StatsChange:
     military: -10
     money: 0
-    north: -15
+    north: -10
     south: 10
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Call for 300,000 Union volunteers.
   decision2StatsChange:
-    military: 25
+    military: 20
     money: -10
-    north: 15
-    south: -10
+    north: 10
+    south: -5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

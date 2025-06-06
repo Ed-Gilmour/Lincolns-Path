@@ -28,17 +28,18 @@ MonoBehaviour:
     military: 25
     money: 0
     north: 20
-    south: -30
+    south: -25
   decision1FollowingEvent: {fileID: 0}
   decision2Description: "Don\u2019t sign the Emancipation Proclamation."
   decision2StatsChange:
     military: 0
     money: 0
     north: -20
-    south: 30
+    south: 25
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

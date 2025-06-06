@@ -26,10 +26,10 @@ MonoBehaviour:
     volunteers.
   decision1Description: Call for 500,000 volunteers.
   decision1StatsChange:
-    military: 35
+    military: 30
     money: -15
-    north: 10
-    south: -10
+    north: 5
+    south: -5
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Call for an end to the war and peace negotiations.
   decision2StatsChange:
@@ -43,3 +43,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

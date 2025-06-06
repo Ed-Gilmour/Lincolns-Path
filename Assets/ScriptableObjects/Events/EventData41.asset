@@ -28,15 +28,15 @@ MonoBehaviour:
   decision1Description: Focus on work.
   decision1StatsChange:
     military: -10
-    money: 10
-    north: -15
+    money: 5
+    north: -5
     south: 0
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Order celebrations for the victories.
   decision2StatsChange:
     military: -5
     money: -5
-    north: 15
+    north: 10
     south: 0
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
@@ -44,3 +44,5 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  endEvent: 0
+  decision2Benny: 0

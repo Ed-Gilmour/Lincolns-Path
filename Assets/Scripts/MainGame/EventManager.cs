@@ -6,6 +6,15 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; }
+    [SerializeField] private IntroManager.IntroTextData[] yearBreakTexts;
+    [SerializeField] private AudioSource theaterAmbience;
+    [SerializeField] private GameObject northSong;
+    [SerializeField] private GameObject southSong;
+    [SerializeField] private IntroManager.IntroTextData endGameText1;
+    public IntroManager.IntroTextData endGameText2Died;
+    public IntroManager.IntroTextData endGameText2Lived;
+    [SerializeField] private AudioManager.AudioClipData shotSound;
+    [SerializeField] private Animator theaterAnimator;
     [SerializeField] private Animator tutorialAnimator;
     [SerializeField] private GameObject benny;
     [SerializeField] private TMP_FontAsset writtenFont;
@@ -47,14 +56,19 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameObject[] objectsToActivateOnStart;
     [SerializeField] private EventData[] events;
     [SerializeField] private int startIndex;
+    [HideInInspector] public bool wonGame;
     private EventData currentEvent;
     private EventData lossEvent;
     private int currentEventIndex;
-    private List<bool> allDecisions = new();
+    private bool currentReverse;
+    private List<(bool, bool)> allDecisions = new();
     private List<(EventData, int)> futureEvents = new();
     private bool isFutureEvent;
+    private bool onYearBreak;
+    private int yearBreakIndex;
     private const float writtenLineSpacing = -30f;
     private const float typedLineSpacing = -20f;
+    public const int SouthToNotDie = 80;
 
     private void Awake()
     {
@@ -63,15 +77,32 @@ public class EventManager : MonoBehaviour
         StatManager.Instance.onStatsChanged += OnStatsChanged;
         UpdateAccessibilityFont(PauseMenu.Instance.GetIsAccessibilityFont());
         PauseMenu.Instance.OnAccessibilityFontChanged += UpdateAccessibilityFont;
-        IntroManager.Instance.OnFinishedSwipeOut += DisplayTimeline;
+        IntroManager.Instance.OnFinishedSwipeOut += OnSwipeOut;
     }
 
-    private void DisplayTimeline(bool notFromIntro)
+    private void OnSwipeOut(bool notFromIntro)
     {
-        if (notFromIntro)
+        if (onYearBreak)
         {
+            StartCoroutine(YearBreakOverRoutine());
+        }
+        else if (notFromIntro)
+        {
+            southSong.SetActive(!wonGame);
+            northSong.SetActive(wonGame);
             TimelineManager.Instance.DisplayTimeline(events, allDecisions);
         }
+    }
+
+    IEnumerator YearBreakOverRoutine()
+    {
+        onYearBreak = false;
+        yearBreakIndex++;
+        IntroManager.Instance.yearBreakData = null;
+        backgroundAnimator.SetTrigger("Show");
+        statsAnimator.SetTrigger("Show");
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(PlayEventRoutine());
     }
 
     private void OnStatsChanged(StatManager.StatSet statSet)
@@ -183,9 +214,11 @@ public class EventManager : MonoBehaviour
     {
         yield return new WaitForSeconds(eventDelay + currentEvent.additionalDelay);
 
+        currentReverse = Random.Range(0, 2) == 1;
+
         if (currentEvent.eventType == GameEventType.CutToBlack)
         {
-            allDecisions.Add(true);
+            allDecisions.Add((true, currentReverse));
 
             if (currentEvent.lincolnEventType == LincolnEventType.LossEvent)
             {
@@ -205,7 +238,7 @@ public class EventManager : MonoBehaviour
             yield break;
         }
 
-        StatManager.Instance.SetCurrentEvent(currentEvent);
+        StatManager.Instance.SetCurrentEvent(currentEvent, currentReverse);
         bool isLetter = currentEvent.eventType == GameEventType.Letter;
         bool isDocument = currentEvent.eventType == GameEventType.Document;
         Animator eventAnimator = isLetter ? letterAnimator : (isDocument ? documentAnimator : personAnimator);
@@ -224,8 +257,8 @@ public class EventManager : MonoBehaviour
         {
             (isLetter ? letterText : personText).text = currentEvent.eventDescription;
         }
-        decision1Text.text = currentEvent.decision1Description;
-        decision2Text.text = currentEvent.decision2Description;
+        decision1Text.text = currentReverse ? currentEvent.decision2Description : currentEvent.decision1Description;
+        decision2Text.text = currentReverse ? currentEvent.decision1Description : currentEvent.decision2Description;
 
         if (!isLetter && !isDocument)
         {
@@ -257,11 +290,14 @@ public class EventManager : MonoBehaviour
 
     public void CloseEvent(bool isDecision1)
     {
-        allDecisions.Add(isDecision1);
+        if (currentReverse) isDecision1 = !isDecision1;
+
+        EventData oldEvent = currentEvent;
+        allDecisions.Add((isDecision1, currentReverse));
         StartCoroutine(CloseEventRoutine(isDecision1, currentEvent));
         if (currentEvent.lincolnEventType != LincolnEventType.LossEvent)
         {
-            if (currentEventIndex < events.Length - 1 || lossEvent != null)
+            if (!currentEvent.endEvent && (currentEventIndex < events.Length - 1 || lossEvent != null))
             {
                 if (lossEvent == null)
                 {
@@ -321,13 +357,68 @@ public class EventManager : MonoBehaviour
                     currentEvent = lossEvent;
                 }
 
-                StartCoroutine(PlayEventRoutine());
+                onYearBreak = oldEvent.date.Length > 0 && currentEvent.date.Length > 0 && oldEvent.date[^1] != currentEvent.date[^1];
+
+                if (onYearBreak)
+                {
+                    StartCoroutine(YearBreakRoutine());
+                }
+                else
+                {
+                    StartCoroutine(PlayEventRoutine());
+                }
+            }
+            else if (currentEvent.endEvent)
+            {
+                wonGame = true;
+                StartCoroutine(GameEndRoutine());
             }
         }
         else
         {
             StartCoroutine(LossRoutine());
         }
+    }
+
+    IEnumerator YearBreakRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+        backgroundAnimator.SetTrigger("Hide");
+        statsAnimator.SetTrigger("Hide");
+        yield return new WaitForSeconds(2f);
+        IntroManager.Instance.yearBreakIndex = 0;
+        IntroManager.IntroTextData[] textsData = new IntroManager.IntroTextData[2];
+        textsData[0] = yearBreakTexts[yearBreakIndex];
+        string yearStr = "186" + (2 + yearBreakIndex) + ".";
+        textsData[1] = new IntroManager.IntroTextData(null, yearStr, 2f);
+        IntroManager.Instance.yearBreakData = textsData;
+        IntroManager.Instance.StartCoroutine(IntroManager.Instance.IntroTextRoutine(yearBreakTexts[yearBreakIndex]));
+    }
+
+    IEnumerator GameEndRoutine()
+    {
+        backgroundAnimator.SetTrigger("Hide");
+        statsAnimator.SetTrigger("Hide");
+        yield return new WaitForSeconds(2f);
+        theaterAnimator.gameObject.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        bool notDie = StatManager.Instance.stats.south >= SouthToNotDie;
+        if (notDie)
+        {
+            theaterAnimator.SetTrigger("Hide");
+        }
+        else
+        {
+            theaterAmbience.mute = true;
+            blackBackground.SetActive(true);
+            shotSound.Play();
+        }
+        yield return new WaitForSeconds(2f);
+        IntroManager.IntroTextData[] textData = new IntroManager.IntroTextData[2];
+        textData[0] = notDie ? endGameText2Lived : endGameText2Died;
+        textData[1] = endGameText1;
+        IntroManager.Instance.endData = textData;
+        IntroManager.Instance.StartCoroutine(IntroManager.Instance.IntroTextRoutine(textData[0]));
     }
 
     EventData GetCurrentFutureEventData()
@@ -355,7 +446,7 @@ public class EventManager : MonoBehaviour
             AnimatorStateInfo stateInfo = backgroundAnimator.GetCurrentAnimatorStateInfo(0);
             return stateInfo.IsName("MainGameFadeOut") && stateInfo.normalizedTime >= 1f;
         });
-        DisplayTimeline(true);
+        OnSwipeOut(true);
     }
 
     private IEnumerator CloseEventRoutine(bool isDecision1, EventData closingEvent)
@@ -382,7 +473,7 @@ public class EventManager : MonoBehaviour
 
         Animator eventAnimator = isLetter ? letterAnimator : (isDocument ? documentAnimator : personAnimator);
 
-        eventAnimator.SetTrigger(isDecision1 ? "Left" : "Right");
+        eventAnimator.SetTrigger((currentReverse ? !isDecision1 : isDecision1) ? "Left" : "Right");
         AnimatorStateInfo stateInfo = eventAnimator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitUntil(() =>
         {

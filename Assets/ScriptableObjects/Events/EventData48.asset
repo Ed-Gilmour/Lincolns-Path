@@ -25,22 +25,23 @@ MonoBehaviour:
   eventDescription: Sir, Congress has passed the 13th amendment, which will abolish
     slavery, and I suggest you suggest you approve it despite it not being necessary
     to sign it.
-  decision1Description: Sign the Amendment.
+  decision1Description: Sign the 13th Amendment.
   decision1StatsChange:
     military: 0
     money: 0
-    north: 15
-    south: -10
+    north: 5
+    south: -5
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: Refuse to sign it.
+  decision2Description: Refuse to sign the 13th Amendment.
   decision2StatsChange:
     military: 0
     money: 0
-    north: -10
-    south: 15
+    north: -5
+    south: 5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

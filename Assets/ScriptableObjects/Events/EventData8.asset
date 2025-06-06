@@ -24,8 +24,7 @@ MonoBehaviour:
   dateShort: 11/29/61
   eventDescription: Mr. President, after convincing General Winfield Scott to continue
     serving he has died of an unknown health condition.
-  decision1Description: Issue a public apology and appoint General Geoge McClellan
-    as General-in-chief.
+  decision1Description: Issue a public apology and appoint General McClellan as General-in-chief.
   decision1StatsChange:
     military: -15
     money: 0
@@ -44,3 +43,5 @@ MonoBehaviour:
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
+  eventDelayCount: 0
+  decision2Benny: 0

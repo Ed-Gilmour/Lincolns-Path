@@ -33,9 +33,8 @@ MonoBehaviour:
     north: -5
     south: 0
   decision1FollowingEvent: {fileID: 0}
-  decision2Description: Publicly accuse General McClellan of not being aggressive
-    and replace him with General Burnside as the new Commander of the army of the
-    Potomac.
+  decision2Description: Accuse General McClellan of not being aggressive and replace
+    him with General Burnside as the new Commander of the army of the Potomac.
   decision2StatsChange:
     military: -10
     money: 0
@@ -47,3 +46,5 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  endEvent: 0
+  decision2Benny: 0

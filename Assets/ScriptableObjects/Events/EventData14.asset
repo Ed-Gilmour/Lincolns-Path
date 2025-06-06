@@ -30,7 +30,7 @@ MonoBehaviour:
     military: 20
     money: 10
     north: 10
-    south: -15
+    south: -10
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Limit celebrations and continue working.
   decision2StatsChange:

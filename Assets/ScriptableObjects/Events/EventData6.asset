@@ -25,22 +25,23 @@ MonoBehaviour:
   eventDescription: Mr. President, I regret to inform you that the Union suffered
     another terrible defeat in the Battle of Ball's Bluff and Colonel Edward Baker
     has died.
-  decision1Description: Reinforce regiments.
+  decision1Description: Reinforce regiments to counteract the defeat.
   decision1StatsChange:
     military: -5
     money: -5
-    north: 10
-    south: -10
+    north: 5
+    south: -5
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Blame General Charles Stone, the officer of the battle.
   decision2StatsChange:
     military: -15
     money: 0
     north: -15
-    south: 5
+    south: 10
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

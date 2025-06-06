@@ -29,7 +29,7 @@ MonoBehaviour:
   decision1StatsChange:
     military: -15
     money: 0
-    north: 10
+    north: 5
     south: 0
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Publicly blame General Hooker for the loss.
@@ -44,3 +44,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

@@ -29,18 +29,20 @@ MonoBehaviour:
   decision1StatsChange:
     military: 0
     money: 5
-    north: 5
-    south: -20
+    north: 20
+    south: -25
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Attend his funeral on the 15th.
   decision2StatsChange:
     military: 0
     money: 0
-    north: -5
-    south: 20
+    north: -15
+    south: 25
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  endEvent: 0
+  decision2Benny: 0

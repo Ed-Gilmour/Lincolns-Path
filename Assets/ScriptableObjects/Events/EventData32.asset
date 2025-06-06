@@ -30,7 +30,7 @@ MonoBehaviour:
   decision1StatsChange:
     military: 10
     money: 0
-    north: 10
+    north: 5
     south: 0
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Invest in the army of Potomac and replace General Hooker
@@ -38,7 +38,7 @@ MonoBehaviour:
   decision2StatsChange:
     military: 20
     money: -5
-    north: 15
+    north: 10
     south: -5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

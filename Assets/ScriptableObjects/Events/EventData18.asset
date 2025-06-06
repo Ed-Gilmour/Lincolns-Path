@@ -29,15 +29,15 @@ MonoBehaviour:
   decision1StatsChange:
     military: 0
     money: 0
-    north: -20
-    south: 20
+    north: -15
+    south: 15
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Approve the Morrill Land Act.
   decision2StatsChange:
     military: 0
     money: 15
-    north: 10
-    south: -10
+    north: 5
+    south: -5
   decision2FollowingEvent: {fileID: 0}
   lincolnEventType: 1
   additionalDelay: 0

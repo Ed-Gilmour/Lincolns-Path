@@ -29,9 +29,9 @@ MonoBehaviour:
     the war efforts.
   decision1StatsChange:
     military: -5
-    money: -10
-    north: -5
-    south: -5
+    money: 0
+    north: -10
+    south: 0
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Publicly Condemn the democrats and McClellan.
   decision2StatsChange:
@@ -45,3 +45,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

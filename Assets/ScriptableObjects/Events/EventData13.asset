@@ -28,14 +28,14 @@ MonoBehaviour:
   decision1StatsChange:
     military: 0
     money: 0
-    north: -10
-    south: 15
+    north: -5
+    south: 10
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Increase pressure on Confederate forces in Norfolk, Virginia.
   decision2StatsChange:
     military: -15
     money: 0
-    north: 10
+    north: 5
     south: 0
   decision2FollowingEvent: {fileID: 11400000, guid: 38c270b792e947e4386c09e92019f4fc, type: 2}
   lincolnEventType: 1
@@ -43,3 +43,4 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0

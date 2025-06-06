@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0dcb2be40ba6584d9fb0e965e028379, type: 3}
+  m_Name: EventData50
+  m_EditorClassIdentifier: 
+  eventType: 1
+  title: Letter from Secretary of the Treasury William Fessenden
+  personSprite: {fileID: 0}
+  showSound:
+    clip: {fileID: 0}
+    mixerGroup: {fileID: 0}
+    volume: 0
+    pitchVariation: 0
+  date: March 4, 1865
+  dateShort: 3/4/65
+  eventDescription: 'Mr. President,
+
+
+    I have tendered my resignation from the
+    office of Secretary of the Treasury to return to Congress. I have found myself
+    in disagreement with my position here and the duties it contains.
+
+
+    Sincerely
+    William Fessenden.'
+  decision1Description: Accept his resignation and appoint Hugh McCulloch as his
+    replacement.
+  decision1StatsChange:
+    military: 0
+    money: 5
+    north: -5
+    south: 0
+  decision1FollowingEvent: {fileID: 0}
+  decision2Description: Convince Edwin Morgan, New York Senator, to take up the position.
+  decision2StatsChange:
+    military: 0
+    money: 0
+    north: 5
+    south: -5
+  decision2FollowingEvent: {fileID: 0}
+  lincolnEventType: 0
+  additionalDelay: 0
+  screenTextDelay: 0
+  continueTextTime: 0
+  eventDelayCount: 0
+  decision2Benny: 0

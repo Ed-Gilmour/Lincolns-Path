@@ -9,12 +9,15 @@ public class TimelineEventToggle : MonoBehaviour
     [SerializeField] private GameObject notRealIcon;
     [SerializeField] private TextMeshProUGUI dateText;
 
-    public void SetTimelineToggle(bool lincoln, bool shouldHave, bool notReal, string date)
+    public void SetTimelineToggle(bool lincoln, bool shouldHave, bool notReal, string date, bool none = false)
     {
-        lincolnIcon.SetActive(lincoln && !shouldHave);
-        differentIcon.SetActive(!lincoln && !notReal && !shouldHave);
-        shouldHaveIcon.SetActive(shouldHave);
-        notRealIcon.SetActive(notReal);
+        if (!none)
+        {
+            lincolnIcon.SetActive(lincoln && !shouldHave);
+            differentIcon.SetActive(!lincoln && !notReal && !shouldHave);
+            shouldHaveIcon.SetActive(shouldHave);
+            notRealIcon.SetActive(notReal);
+        }
 
         dateText.text = date;
     }

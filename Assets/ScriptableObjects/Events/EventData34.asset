@@ -27,27 +27,27 @@ MonoBehaviour:
 
     There has been mob violence and riots in
     New York the past few days due to the mandatory draft. I Strongly recommend you
-    declare martial law to settle this issue.
+    declare martial law to settle this.
 
 
-    From Governor Seymour of New
-    York'
+    From Governor Seymour of New York'
   decision1Description: Declare martial law.
   decision1StatsChange:
     military: -20
     money: -10
-    north: -25
-    south: 0
+    north: -35
+    south: 20
   decision1FollowingEvent: {fileID: 0}
   decision2Description: Refuse to Declare martial law.
   decision2StatsChange:
     military: -10
     money: -10
     north: 10
-    south: 0
+    south: -10
   decision2FollowingEvent: {fileID: 11400000, guid: 2bb476f6c0f9db5448fcda282a607a3f, type: 2}
   lincolnEventType: 0
   additionalDelay: 0
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  decision2Benny: 0
