@@ -22,7 +22,7 @@ MonoBehaviour:
     pitchVariation: 0.2
   date: May 5, 1863
   dateShort: 5/5/63
-  eventDescription: Mr. President, I regret to inform you that union forces have
+  eventDescription: Mr. President, I regret to inform you that Union forces have
     lost the battle of Chancellorsville, Virginia and have been forced to retreat.
   decision1Description: Visit the headquarters of the army of the Potomac to raise
     morale.
@@ -44,4 +44,5 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  endEvent: 0
   decision2Benny: 0

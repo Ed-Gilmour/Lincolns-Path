@@ -31,7 +31,7 @@ MonoBehaviour:
 
 
     Sincerely
-    William Fessenden.'
+    William Fessenden'
   decision1Description: Accept his resignation and appoint Hugh McCulloch as his
     replacement.
   decision1StatsChange:
@@ -52,4 +52,5 @@ MonoBehaviour:
   screenTextDelay: 0
   continueTextTime: 0
   eventDelayCount: 0
+  endEvent: 0
   decision2Benny: 0
