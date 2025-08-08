@@ -1,4 +1,4 @@
-For final build (Name build folder "Build") (If changed certain player settings after 5/19/24 it won't work)
+For final build (Name build folder "Build") (If changed certain player settings after 5/19/25 it won't work)
 - Put the page background and lincoln icon in TemplateData
 - Replace index.html with this
 <!DOCTYPE html>
